@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Olympo - Categorias. Encontre exatamente o que você precisa em nossas coleções.">
+  <title>Olympo | Categorias</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* Estilos específicos das categorias */
+    .category-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-lg);
+    }
+    
+    .category-item {
+      position: relative;
+      height: 320px;
+      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--color-surface-border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--spacing-lg);
+      transition: var(--transition-normal);
+    }
+    
+    .category-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-primary);
+    }
+    
+    .category-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, transparent 40%, var(--color-bg-base) 100%);
+      z-index: 1;
+    }
+    
+    .category-item-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+    
+    .category-item h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+    
+    .category-item p {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+      max-width: 400px;
+    }
+    
+    .category-btn {
+      color: var(--color-primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: var(--spacing-sm);
+    }
+    
+    @media (max-width: 768px) {
+      .category-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="/" class="logo">
+        <span>OLYMPO</span>
+      </a>
+      
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/catalogo" class="nav-link">Catálogo</a></li>
+          <li><a href="/categoria" class="nav-link active">Categorias</a></li>
+          <li><a href="/sobre" class="nav-link">Sobre</a></li>
+          <li><a href="/contato" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/catalogo" class="btn btn-primary btn-sm">Explorar</a>
+        <button class="mobile-menu-toggle" aria-label="Abrir Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <h1>Categorias</h1>
+      <p>Explore nossas coleções segmentadas por estilo e necessidade.</p>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <main class="page-content">
+    <div class="container">
+      <div class="category-list">
+        <!-- Categoria 1 -->
+        <a href="/catalogo" class="category-item" style="background-image: linear-gradient(135deg, rgba(10,10,12,0.6), rgba(197,160,89,0.15));">
+          <div class="category-bg"></div>
+          <div class="category-item-content">
+            <h3>Linha Casual</h3>
+            <p>Conforto premium para o dia a dia, com matérias-primas nobres e cortes atemporais.</p>
+            <span class="category-btn">Explorar Linha →</span>
+          </div>
+        </a>
+
+        <!-- Categoria 2 -->
+        <a href="/catalogo" class="category-item" style="background-image: linear-gradient(135deg, rgba(10,10,12,0.6), rgba(229,124,89,0.15));">
+          <div class="category-bg"></div>
+          <div class="category-item-content">
+            <h3>Activewear</h3>
+            <p>Alta tecnologia têxtil para máxima performance, respirabilidade e flexibilidade.</p>
+            <span class="category-btn">Explorar Linha →</span>
+          </div>
+        </a>
+
+        <!-- Categoria 3 -->
+        <a href="/catalogo" class="category-item" style="background-image: linear-gradient(135deg, rgba(10,10,12,0.6), rgba(28,28,34,0.8));">
+          <div class="category-bg"></div>
+          <div class="category-item-content">
+            <h3>Acessórios</h3>
+            <p>Complementos essenciais desenhados para expressar sua individualidade.</p>
+            <span class="category-btn">Explorar Linha →</span>
+          </div>
+        </a>
+
+        <!-- Categoria 4 -->
+        <a href="/catalogo" class="category-item" style="background-image: linear-gradient(135deg, rgba(10,10,12,0.6), rgba(128,97,44,0.3));">
+          <div class="category-bg"></div>
+          <div class="category-item-content">
+            <h3>Edição Limitada</h3>
+            <p>Lançamentos exclusivos numerados com tiragem reduzida e colecionável.</p>
+            <span class="category-btn">Explorar Linha →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="/" class="logo">OLYMPO</a>
+        <p>A união perfeita entre o estilo contemporâneo e a alta costura de performance.</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Olympo. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

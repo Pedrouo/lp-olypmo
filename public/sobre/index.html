@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Olympo - Nossa História. Conheça a marca que une estilo, tecnologia e performance.">
+  <title>Olympo | Sobre Nós</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* Estilos específicos de sobre nós */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--spacing-xl);
+      align-items: center;
+    }
+    
+    .about-text {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+    
+    .about-text h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.2;
+    }
+    
+    .about-text p {
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+    
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-md);
+    }
+    
+    .value-card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-surface-border);
+      border-radius: var(--border-radius-md);
+      padding: var(--spacing-md);
+      transition: var(--transition-normal);
+    }
+    
+    .value-card:hover {
+      border-color: var(--color-primary);
+    }
+    
+    .value-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    .value-card p {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+    
+    .about-visual-box {
+      border: 1px solid var(--color-surface-border);
+      border-radius: var(--border-radius-lg);
+      padding: var(--spacing-lg);
+      background-color: rgba(18, 18, 22, 0.4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+      position: relative;
+    }
+    
+    .about-stat {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+    
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--color-primary-light);
+      line-height: 1;
+    }
+    
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    @media (max-width: 992px) {
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="/" class="logo">
+        <span>OLYMPO</span>
+      </a>
+      
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/catalogo" class="nav-link">Catálogo</a></li>
+          <li><a href="/categoria" class="nav-link">Categorias</a></li>
+          <li><a href="/sobre" class="nav-link active">Sobre</a></li>
+          <li><a href="/contato" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/catalogo" class="btn btn-primary btn-sm">Explorar</a>
+        <button class="mobile-menu-toggle" aria-label="Abrir Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <h1>Nossa História</h1>
+      <p>Nascida do desejo de superar limites estéticos e de performance.</p>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <main class="page-content">
+    <div class="container">
+      <div class="about-layout">
+        <!-- Texto sobre -->
+        <section class="about-text">
+          <h2>Buscamos o ponto ideal onde a tecnologia e a sofisticação se encontram.</h2>
+          <p>Fundada em 2026, a Olympo surgiu da premissa de que o vestuário moderno deve ser versátil. Acreditamos que você não precisa escolher entre o desempenho esportivo e a sofisticação da alta costura.</p>
+          <p>Nossas peças são desenvolvidas por designers e cientistas têxteis de renome, utilizando processos que reduzem o impacto ambiental e garantem durabilidade máxima.</p>
+          
+          <div class="values-grid">
+            <div class="value-card">
+              <h3>Inovação Estética</h3>
+              <p>Design minimalista com linhas marcantes que definem o estilo de época.</p>
+            </div>
+            <div class="value-card">
+              <h3>Responsabilidade</h3>
+              <p>Matérias-primas sustentáveis e cadeia de fornecedores 100% auditada.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Painel Estatísticas/Visual -->
+        <section class="about-visual-box">
+          <div class="hero-bg-glow" style="top: 20%; right: 10%; width: 100%; opacity: 0.1;"></div>
+          <div class="about-stat">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Algodão Orgânico e Fibras Recicladas</span>
+          </div>
+          <div class="about-stat" style="border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: var(--spacing-md);">
+            <span class="stat-number">4+</span>
+            <span class="stat-label">Prêmios de Design & Inovação Têxtil</span>
+          </div>
+          <div class="about-stat" style="border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: var(--spacing-md);">
+            <span class="stat-number">25k+</span>
+            <span class="stat-label">Clientes Satisfeitos ao redor do mundo</span>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="/" class="logo">OLYMPO</a>
+        <p>A união perfeita entre o estilo contemporâneo e a alta costura de performance.</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Olympo. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

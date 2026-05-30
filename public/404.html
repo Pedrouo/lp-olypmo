@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olympo | Página não encontrada</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .error-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 70vh;
+      text-align: center;
+      padding: var(--spacing-lg);
+      position: relative;
+    }
+    .error-code {
+      font-family: 'Outfit', sans-serif;
+      font-size: 8rem;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: var(--spacing-sm);
+      filter: drop-shadow(0 0 30px rgba(197, 160, 89, 0.2));
+    }
+    .error-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      color: var(--color-text);
+      margin-bottom: var(--spacing-md);
+    }
+    .error-description {
+      color: var(--color-text-muted);
+      max-width: 450px;
+      margin-bottom: var(--spacing-xl);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="/" class="logo">OLYMPO</a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/catalogo" class="nav-link">Catálogo</a></li>
+          <li><a href="/categoria" class="nav-link">Categorias</a></li>
+          <li><a href="/sobre" class="nav-link">Sobre</a></li>
+          <li><a href="/contato" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="/" class="btn btn-outline btn-sm">Voltar ao Início</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Error Content -->
+  <main class="error-container">
+    <div class="hero-bg-glow" style="top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.15;"></div>
+    <h1 class="error-code">404</h1>
+    <h2 class="error-title">Página Não Encontrada</h2>
+    <p class="error-description">O link solicitado pode estar corrompido, ou a página foi removida ou renomeada. Explore nosso catálogo para encontrar o que procura.</p>
+    <div class="error-actions">
+      <a href="/" class="btn btn-primary">Página Inicial</a>
+      <a href="/catalogo" class="btn btn-outline" style="margin-left: 10px;">Ver Catálogo</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="/" class="logo">OLYMPO</a>
+        <p>A união perfeita entre o estilo contemporâneo e a alta costura de performance.</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Olympo. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
