@@ -76,9 +76,9 @@ export function Footer() {
       </div>
 
       {/* Wordmark watermark */}
-      <div className="container-site pb-[var(--space-8)]">
+      <div className="container-site pb-[var(--space-8)] overflow-hidden">
         <p
-          className="font-['Clash_Display',sans-serif] font-bold text-[clamp(5rem,15vw,14rem)] leading-none tracking-[0.04em] select-none"
+          className="font-['Clash_Display',sans-serif] font-bold text-[clamp(3rem,15vw,12rem)] leading-none tracking-[0.04em] select-none text-center whitespace-nowrap"
           style={{ color: "rgba(245,244,241,0.04)" }}
         >
           OLYMPO
