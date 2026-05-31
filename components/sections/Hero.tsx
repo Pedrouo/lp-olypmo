@@ -86,18 +86,13 @@ export function Hero() {
           transition={{ delay: 1, duration: 0.7, ease: easeOut }}
         >
           <div className="relative w-full max-w-[380px] bg-[rgba(20,20,22,0.55)] backdrop-blur-[16px] border border-[var(--color-line)] rounded-[var(--radius-md)] shadow-[var(--shadow-float)] p-6 group hover:border-[var(--color-gold-deep)] transition-colors duration-300">
-            {/* Product placeholder image */}
-            <div className="w-full aspect-[4/3] bg-[var(--color-surface)] rounded-[var(--radius-sm)] mb-5 flex items-center justify-center overflow-hidden">
-              <div className="text-center">
-                <div className="w-20 h-20 mx-auto mb-3 rounded-full bg-[var(--color-surface-2)] flex items-center justify-center">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-faint)" strokeWidth="1.5">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                  </svg>
-                </div>
-                <span className="mono text-[var(--font-label)] text-[var(--color-text-faint)] uppercase tracking-[0.08em]">
-                  Linha Zeus
-                </span>
-              </div>
+            {/* Product image */}
+            <div className="w-full aspect-[4/3] rounded-[var(--radius-sm)] mb-5 overflow-hidden">
+              <img
+                src="/academia.webp"
+                alt="Equipamentos Olympo Steel"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+              />
             </div>
 
             {/* Info */}

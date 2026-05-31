@@ -55,18 +55,13 @@ export function ProductLines() {
           {lines.map((line) => (
             <StaggerItem key={line.name}>
               <div className="group border border-[var(--color-line)] rounded-[var(--radius-sm)] overflow-hidden hover:border-[var(--color-line-strong)] transition-colors">
-                {/* Image placeholder */}
-                <div className="w-full aspect-[4/3] bg-[var(--color-surface)] flex items-center justify-center overflow-hidden">
-                  <div className="text-center transition-transform duration-500 group-hover:scale-[1.04]">
-                    <div className="w-16 h-16 mx-auto mb-2 rounded-full bg-[var(--color-surface-2)] flex items-center justify-center">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-faint)" strokeWidth="1.5">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                      </svg>
-                    </div>
-                    <span className="mono text-[var(--font-label)] text-[var(--color-text-faint)] uppercase tracking-[0.08em]">
-                      {line.example}
-                    </span>
-                  </div>
+                {/* Image */}
+                <div className="w-full aspect-[4/3] overflow-hidden">
+                  <img
+                    src="/academia.webp"
+                    alt={`Linha ${line.name} - ${line.example}`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
                 </div>
 
                 {/* Content */}

@@ -13,20 +13,12 @@ export function FeaturedProduct() {
       <div className="container-site relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-[var(--space-12)] items-center">
         {/* Left: Image placeholder — 7 cols */}
         <ScrollReveal className="lg:col-span-7">
-          <div className="w-full aspect-[16/10] bg-[var(--color-surface)] rounded-[var(--radius-md)] flex items-center justify-center relative overflow-hidden">
-            <div className="text-center">
-              <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-[var(--color-surface-2)] flex items-center justify-center">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-faint)" strokeWidth="1.5">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-              </div>
-              <span className="mono text-[var(--font-label)] text-[var(--color-text-faint)] uppercase tracking-[0.08em]">
-                Crossover Angular
-              </span>
-              <p className="text-[var(--font-small)] text-[var(--color-text-faint)] mt-1">
-                390 kg · 2,40m (L) x 1,10m (P) x 2,30m (A)
-              </p>
-            </div>
+          <div className="w-full aspect-[16/10] rounded-[var(--radius-md)] overflow-hidden">
+            <img
+              src="/academia.webp"
+              alt="Crossover Angular Olympo Steel"
+              className="w-full h-full object-cover"
+            />
           </div>
         </ScrollReveal>
 

@@ -52,10 +52,12 @@ export function CatalogList() {
               >
                 <div className="flex items-center gap-[var(--space-4)]">
                   {/* Mobile thumbnail */}
-                  <div className="lg:hidden w-12 h-12 rounded-[var(--radius-xs)] bg-[var(--color-surface)] flex-shrink-0 flex items-center justify-center">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-faint)" strokeWidth="1.5">
-                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    </svg>
+                  <div className="lg:hidden w-12 h-12 rounded-[var(--radius-xs)] flex-shrink-0 overflow-hidden">
+                    <img
+                      src="/academia.webp"
+                      alt={cat.nome}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <span
                     className={`mono text-[var(--font-body)] font-medium transition-colors duration-300 ${
@@ -94,9 +96,8 @@ export function CatalogList() {
             ))}
           </div>
 
-          {/* Right: Hover image panel — 5 cols (desktop only) */}
           <div className="hidden lg:flex lg:col-span-5 items-center justify-center">
-            <div className="relative w-full aspect-[4/5] rounded-[var(--radius-md)] overflow-hidden bg-[var(--color-surface)]">
+            <div className="relative w-full aspect-[4/5] rounded-[var(--radius-md)] overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
@@ -104,22 +105,23 @@ export function CatalogList() {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-0 flex flex-col items-center justify-center p-8"
+                  className="absolute inset-0"
                 >
-                  <div className="w-24 h-24 rounded-full bg-[var(--color-surface-2)] flex items-center justify-center mb-6">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-faint)" strokeWidth="1.5">
-                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    </svg>
+                  <img
+                    src="/academia.webp"
+                    alt={categories[activeIndex].nome}
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Overlay with category info */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(11,11,12,0.85)] via-[rgba(11,11,12,0.2)] to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-8">
+                    <h3 className="font-['Clash_Display',sans-serif] text-[var(--font-display-m)] font-semibold text-[var(--color-text)] mb-1">
+                      {categories[activeIndex].nome}
+                    </h3>
+                    <p className="mono text-[var(--font-label)] text-[var(--color-gold)] uppercase tracking-[0.08em]">
+                      {categories[activeIndex].count} equipamentos
+                    </p>
                   </div>
-                  <h3 className="font-['Clash_Display',sans-serif] text-[var(--font-display-m)] font-semibold text-[var(--color-ink)] text-center mb-2">
-                    {categories[activeIndex].nome}
-                  </h3>
-                  <p className="mono text-[var(--font-label)] text-[var(--color-text-faint)] uppercase tracking-[0.08em]">
-                    {categories[activeIndex].count} equipamentos
-                  </p>
-                  <p className="text-[var(--font-small)] text-[var(--color-text-faint)] text-center mt-4 max-w-[280px]">
-                    {categories[activeIndex].produtos[0]?.nome}
-                  </p>
                 </motion.div>
               </AnimatePresence>
             </div>

@@ -10,9 +10,15 @@ export function Customization() {
       <div className="container-site grid grid-cols-1 lg:grid-cols-12 gap-[var(--space-12)] items-center">
         {/* Left: Image with glass card — 6 cols */}
         <ScrollReveal className="lg:col-span-6">
-          <div className="relative w-full aspect-[4/3] bg-gradient-to-br from-[var(--color-bg-soft)] to-[var(--color-bg)] rounded-[var(--radius-md)] overflow-hidden border border-[var(--color-line)]">
-            {/* Atmosphere */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(232,196,76,0.08)_0%,transparent_60%)]" />
+          <div className="relative w-full aspect-[4/3] rounded-[var(--radius-md)] overflow-hidden border border-[var(--color-line)]">
+            {/* Image */}
+            <img
+              src="/academia.webp"
+              alt="Academia equipada com Olympo Steel"
+              className="w-full h-full object-cover"
+            />
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-[rgba(11,11,12,0.45)]" />
 
             {/* Glass card overlay */}
             <div className="absolute bottom-6 left-6 right-6 bg-[rgba(20,20,22,0.6)] backdrop-blur-[16px] border border-[var(--color-line)] rounded-[var(--radius-md)] p-5">
