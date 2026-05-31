@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 
 interface ButtonProps {
   children: ReactNode;
-  variant?: "primary" | "ghost" | "link";
+  variant?: "primary" | "ghost" | "link" | "ghost-dark" | "primary-dark";
   href?: string;
   className?: string;
   icon?: boolean;
@@ -26,6 +26,8 @@ export function Button({
   const variants = {
     primary: `${base} px-7 py-3 rounded-[var(--radius-pill)] bg-[var(--color-gold)] text-[var(--color-ink)] hover:bg-[var(--color-gold-soft)] hover:scale-[1.03] hover:shadow-[0_4px_20px_rgba(232,196,76,0.3)] active:scale-[0.98]`,
     ghost: `${base} px-7 py-3 rounded-[var(--radius-pill)] border border-[var(--color-line)] text-[var(--color-text)] hover:bg-[var(--color-bg-soft)] hover:border-[var(--color-line-strong)]`,
+    "ghost-dark": `${base} px-7 py-3 rounded-[var(--radius-pill)] border border-[var(--color-white-line-strong)] text-[var(--color-white-text)] hover:bg-[var(--color-white-soft)] hover:border-[var(--color-white-muted)]`,
+    "primary-dark": `${base} px-7 py-3 rounded-[var(--radius-pill)] bg-[var(--color-ink)] text-[var(--color-white)] hover:bg-[var(--color-bg-soft)] hover:scale-[1.03] hover:shadow-[0_4px_20px_rgba(11,11,12,0.2)] active:scale-[0.98]`,
     link: `${base} text-[var(--color-text)] relative group`,
   };
 

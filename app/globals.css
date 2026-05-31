@@ -34,6 +34,18 @@
   --color-gold-deep: #C9A227;
   --color-line: rgba(245,244,241,0.08);
   --color-line-strong: rgba(245,244,241,0.16);
+
+  /* ── Branco / Seções claras ── */
+  --color-white: #FFFFFF;
+  --color-white-off: #FAFAF8;
+  --color-white-soft: #F2F1EC;
+  --color-white-muted: #E5E4DE;
+  --color-white-text: #1A1A1D;
+  --color-white-text-dim: #5A5A5F;
+  --color-white-text-faint: #8A8A8F;
+  --color-white-line: rgba(11,11,12,0.08);
+  --color-white-line-strong: rgba(11,11,12,0.16);
+
   --color-success: #6FCF97;
   --color-danger: #E06A5B;
 
@@ -143,6 +155,15 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+/* ── Seção clara (inverte cores do label) ── */
+.section-light .section-label {
+  color: var(--color-gold-deep);
+}
+
+.section-light .section-label::before {
+  background-color: var(--color-gold-deep);
 }
 
 .section-label::before {
