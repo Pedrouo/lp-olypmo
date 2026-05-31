@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { ArrowRight } from "lucide-react";
 import { categories } from "@/data/products";
-import { asset } from "@/lib/assets";
 
 export function CatalogList() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -55,7 +54,7 @@ export function CatalogList() {
                   {/* Mobile thumbnail */}
                   <div className="lg:hidden w-12 h-12 rounded-[var(--radius-xs)] flex-shrink-0 overflow-hidden">
                     <img
-                      src={asset("/academia.webp")}
+                      src="/academia.webp"
                       alt={cat.nome}
                       className="w-full h-full object-cover"
                     />
@@ -109,7 +108,7 @@ export function CatalogList() {
                   className="absolute inset-0"
                 >
                   <img
-                    src={asset("/academia.webp")}
+                    src="/academia.webp"
                     alt={categories[activeIndex].nome}
                     className="w-full h-full object-cover"
                   />

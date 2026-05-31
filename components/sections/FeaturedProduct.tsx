@@ -1,6 +1,5 @@
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Button } from "@/components/ui/Button";
-import { asset } from "@/lib/assets";
 
 export function FeaturedProduct() {
   return (
@@ -16,7 +15,7 @@ export function FeaturedProduct() {
         <ScrollReveal className="lg:col-span-7">
           <div className="w-full aspect-[16/10] rounded-[var(--radius-md)] overflow-hidden">
             <img
-              src={asset("/academia.webp")}
+              src="/academia.webp"
               alt="Crossover Angular Olympo Steel"
               className="w-full h-full object-cover"
             />

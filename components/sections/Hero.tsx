@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
-import { asset } from "@/lib/assets";
 
 const emphasis = [0.16, 1, 0.3, 1] as const;
 const easeOut = [0.22, 1, 0.36, 1] as const;
@@ -90,7 +89,7 @@ export function Hero() {
             {/* Product image */}
             <div className="w-full aspect-[4/3] rounded-[var(--radius-sm)] mb-5 overflow-hidden">
               <img
-                src={asset("/academia.webp")}
+                src="/academia.webp"
                 alt="Equipamentos Olympo Steel"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
               />
