@@ -1,5 +1,6 @@
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Button } from "@/components/ui/Button";
+import { asset } from "@/lib/assets";
 
 export function Customization() {
   return (
@@ -13,7 +14,7 @@ export function Customization() {
           <div className="relative w-full aspect-[4/3] rounded-[var(--radius-md)] overflow-hidden border border-[var(--color-line)]">
             {/* Image */}
             <img
-              src="/academia.webp"
+              src={asset("/academia.webp")}
               alt="Academia equipada com Olympo Steel"
               className="w-full h-full object-cover"
             />

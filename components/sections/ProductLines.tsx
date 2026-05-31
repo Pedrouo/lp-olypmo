@@ -4,6 +4,7 @@ import {
   StaggerItem,
 } from "@/components/motion/ScrollReveal";
 import { ArrowRight } from "lucide-react";
+import { asset } from "@/lib/assets";
 
 const lines = [
   {
@@ -58,7 +59,7 @@ export function ProductLines() {
                 {/* Image */}
                 <div className="w-full aspect-[4/3] overflow-hidden">
                   <img
-                    src="/academia.webp"
+                    src={asset("/academia.webp")}
                     alt={`Linha ${line.name} - ${line.example}`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                   />
