@@ -44,7 +44,7 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-[var(--space-10)]">
           {navGroups.map((group) => (
             <div key={group.title}>
-              <h4 className="mono text-[0.875rem] uppercase tracking-[0.08em] text-[var(--color-gold)] mb-[var(--space-5)]">
+              <h4 className="mono text-[0.875rem] uppercase tracking-[0.08em] text-[var(--color-gold)] mb-[var(--space-4)]">
                 {group.title}
               </h4>
               <ul className="flex flex-col gap-[var(--space-3)]">
