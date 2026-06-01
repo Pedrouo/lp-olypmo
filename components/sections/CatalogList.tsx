@@ -52,7 +52,7 @@ export function CatalogList() {
                 }`}
                 onMouseEnter={() => setActiveIndex(i)}
               >
-                <div className="flex items-center gap-[var(--space-4)]">
+                <div className="flex items-center gap-[var(--space-4)] min-w-0">
                   {/* Mobile thumbnail */}
                   <div className="lg:hidden w-12 h-12 rounded-[var(--radius-xs)] flex-shrink-0 overflow-hidden">
                     <img
@@ -62,7 +62,7 @@ export function CatalogList() {
                     />
                   </div>
                   <span
-                    className={`mono text-[1rem] font-medium transition-colors duration-300 ${
+                    className={`mono text-[1rem] font-medium transition-colors duration-300 flex-shrink-0 ${
                       activeIndex === i
                         ? "text-[var(--color-gold)]"
                         : "text-[var(--color-text-faint)]"
@@ -71,7 +71,7 @@ export function CatalogList() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span
-                    className={`font-['Clash_Display',sans-serif] text-[1.125rem] font-semibold transition-colors duration-300 ${
+                    className={`font-['Clash_Display',sans-serif] text-[1rem] sm:text-[1.125rem] font-semibold transition-colors duration-300 truncate ${
                       activeIndex === i
                         ? "text-[var(--color-text)]"
                         : "text-[var(--color-text-dim)]"
@@ -81,9 +81,9 @@ export function CatalogList() {
                   </span>
                 </div>
 
-                <div className="flex items-center gap-[var(--space-4)]">
-                  <span className="mono text-sm text-[var(--color-text-faint)]">
-                    {cat.count} produtos
+                <div className="flex items-center gap-[var(--space-2)] sm:gap-[var(--space-4)] flex-shrink-0 ml-2">
+                  <span className="mono text-xs sm:text-sm text-[var(--color-text-faint)]">
+                    ver mais
                   </span>
                   <ArrowRight
                     size={16}
