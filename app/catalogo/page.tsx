@@ -163,6 +163,16 @@ function CatalogoContent() {
                 Filtrar por Linha
               </span>
               <div className="flex flex-wrap gap-2 lg:justify-end">
+                <button
+                  onClick={() => setSelectedLine(null)}
+                  className={`px-3 py-2 rounded-[var(--radius-pill)] text-[0.75rem] mono uppercase tracking-[0.05em] transition-colors cursor-pointer ${
+                    !selectedLine
+                      ? "bg-[var(--color-gold)] text-[var(--color-ink)]"
+                      : "border border-[var(--color-line)] text-[var(--color-text-dim)] hover:border-[var(--color-line-strong)]"
+                  }`}
+                >
+                  Todas
+                </button>
                 {allLines.map((line) => {
                   const isAvailable = linesWithProducts.has(line);
                   const isSelected = selectedLine === line;
