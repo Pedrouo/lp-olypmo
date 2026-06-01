@@ -34,7 +34,7 @@ export function Nav() {
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[var(--color-bg-elev)]/80 backdrop-blur-[12px] border-b border-[var(--color-line)]"
+            ? "bg-[var(--color-bg-elev)]/80 backdrop-blur-[12px] border-b border-neutral-900"
             : "bg-transparent"
         }`}
       >

@@ -103,6 +103,7 @@
 html {
   scroll-behavior: smooth;
   background-color: var(--color-bg);
+  overscroll-behavior: none;
 }
 
 body {
@@ -111,6 +112,7 @@ body {
   font-family: 'General Sans', 'Hanken Grotesk', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
 }
 
 /* ── Grain / noise overlay ── */
