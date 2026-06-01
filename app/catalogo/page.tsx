@@ -158,18 +158,13 @@ function CatalogoContent() {
               className="group border border-[var(--color-line)] rounded-[var(--radius-sm)] overflow-hidden hover:border-[var(--color-line-strong)] transition-colors cursor-pointer"
               onClick={() => setSelectedProduct(product)}
             >
-              {/* Image placeholder */}
-              <div className="w-full aspect-square bg-[var(--color-surface)] flex items-center justify-center overflow-hidden">
-                <div className="text-center transition-transform duration-500 group-hover:scale-[1.04]">
-                  <div className="w-12 h-12 mx-auto mb-2 rounded-full bg-[var(--color-surface-2)] flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-faint)" strokeWidth="1.5">
-                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    </svg>
-                  </div>
-                  <span className="mono text-[10px] text-[var(--color-text-faint)] uppercase tracking-[0.08em] px-4 line-clamp-2">
-                    {product.nome}
-                  </span>
-                </div>
+              {/* Product image */}
+              <div className="w-full aspect-square overflow-hidden bg-[var(--color-surface)] border-b border-[var(--color-line)]">
+                <img
+                  src="/academia.webp"
+                  alt={product.nome}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                />
               </div>
 
               {/* Info */}
@@ -236,7 +231,7 @@ function CatalogoContent() {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Image */}
-              <div className="w-full aspect-[4/3] bg-[var(--color-surface)] flex items-center justify-center relative">
+              <div className="w-full aspect-[4/3] overflow-hidden relative">
                 <button
                   onClick={() => setSelectedProduct(null)}
                   className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[rgba(0,0,0,0.3)] backdrop-blur-sm flex items-center justify-center text-white hover:bg-[rgba(0,0,0,0.5)] transition-colors cursor-pointer z-10"
@@ -244,16 +239,11 @@ function CatalogoContent() {
                 >
                   <X size={16} />
                 </button>
-                <div className="text-center">
-                  <div className="w-20 h-20 mx-auto mb-3 rounded-full bg-[var(--color-surface-2)] flex items-center justify-center">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-faint)" strokeWidth="1.5">
-                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    </svg>
-                  </div>
-                  <span className="mono text-[0.75rem] text-[var(--color-text-faint)] uppercase tracking-[0.08em]">
-                    {selectedProduct.linha}
-                  </span>
-                </div>
+                <img
+                  src="/academia.webp"
+                  alt={selectedProduct.nome}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* Content */}
