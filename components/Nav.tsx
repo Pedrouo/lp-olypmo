@@ -107,7 +107,7 @@ export function Nav() {
                     duration: 0.5,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="font-['Clash_Display',sans-serif] text-display-m font-semibold text-[var(--color-text)] hover:text-[var(--color-gold)] transition-colors"
+                  className="font-['Clash_Display',sans-serif] text-[clamp(1.75rem,3vw,2.75rem)] font-semibold text-[var(--color-text)] hover:text-[var(--color-gold)] transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}

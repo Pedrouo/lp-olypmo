@@ -45,7 +45,7 @@ export function ProductLines() {
 
         <ScrollReveal delay={0.1}>
           <div className="flex items-start justify-between mb-[var(--space-12)] flex-wrap gap-4">
-            <h2 className="text-display-m font-semibold leading-[1.05] max-w-[500px]">
+            <h2 className="text-[clamp(1.75rem,3vw,2.75rem)] font-semibold leading-[1.05] max-w-[500px]">
               Três linhas, um padrão.
             </h2>
           </div>
@@ -67,14 +67,14 @@ export function ProductLines() {
                 {/* Content */}
                 <div className="p-[var(--space-6)] bg-[var(--color-bg)] flex flex-col gap-3">
                   <span
-                    className={`inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] text-label font-semibold mono uppercase tracking-[0.05em] ${badgeStyles[line.badge]}`}
+                    className={`inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] text-[0.75rem] font-semibold mono uppercase tracking-[0.05em] ${badgeStyles[line.badge]}`}
                   >
                     {line.name}
                   </span>
-                  <h3 className="text-body-l font-semibold">
+                  <h3 className="text-[1.125rem] font-semibold">
                     Linha {line.name}.
                   </h3>
-                  <p className="text-body text-[var(--color-text-dim)] leading-relaxed">
+                  <p className="text-[1rem] text-[var(--color-text-dim)] leading-relaxed">
                     {line.desc}
                   </p>
                   <a

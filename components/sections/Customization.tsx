@@ -22,7 +22,7 @@ export function Customization() {
 
             {/* Glass card overlay */}
             <div className="absolute bottom-6 left-6 right-6 bg-[rgba(20,20,22,0.6)] backdrop-blur-[16px] border border-[var(--color-line)] rounded-[var(--radius-md)] p-5">
-              <h3 className="font-['Clash_Display',sans-serif] text-h3 font-semibold mb-2">
+              <h3 className="font-['Clash_Display',sans-serif] text-[clamp(1.25rem,2vw,1.625rem)] font-semibold mb-2">
                 Vamos conversar.
               </h3>
               <p className="text-sm text-[var(--color-text-dim)] leading-relaxed mb-4">
@@ -40,10 +40,10 @@ export function Customization() {
         <ScrollReveal className="lg:col-span-6" delay={0.15}>
           <div className="flex flex-col gap-[var(--space-6)]">
             <span className="section-label">Sob medida</span>
-            <h2 className="text-display-m font-semibold leading-[1.05]">
+            <h2 className="text-[clamp(1.75rem,3vw,2.75rem)] font-semibold leading-[1.05]">
               Configure equipamentos sob medida para o seu espaço.
             </h2>
-            <p className="text-body-l text-[var(--color-text-dim)] leading-relaxed max-w-[480px]">
+            <p className="text-[1.125rem] text-[var(--color-text-dim)] leading-relaxed max-w-[480px]">
               Cada academia tem um layout, um público e uma rotina.
               Dimensionamos, ajustamos e fabricamos equipamentos que se encaixam
               no projeto — sem adaptação forçada, sem comprometer a biomecânica.
@@ -51,19 +51,19 @@ export function Customization() {
             <div className="flex flex-col gap-3 py-[var(--space-4)] border-t border-[var(--color-line)]">
               <div className="flex items-center gap-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-gold)]" />
-                <span className="text-body text-[var(--color-text-dim)]">
+                <span className="text-[1rem] text-[var(--color-text-dim)]">
                   Dimensões customizadas
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-gold)]" />
-                <span className="text-body text-[var(--color-text-dim)]">
+                <span className="text-[1rem] text-[var(--color-text-dim)]">
                   Cores e acabamento personalizado
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-gold)]" />
-                <span className="text-body text-[var(--color-text-dim)]">
+                <span className="text-[1rem] text-[var(--color-text-dim)]">
                   Assessoria técnica de layout
                 </span>
               </div>

@@ -21,7 +21,7 @@ export function CatalogList() {
 
         <ScrollReveal delay={0.1}>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-[var(--space-12)]">
-            <h2 className="text-display-m font-semibold leading-[1.05] max-w-[560px]">
+            <h2 className="text-[clamp(1.75rem,3vw,2.75rem)] font-semibold leading-[1.05] max-w-[560px]">
               Nossos sistemas para cada grupo muscular.
             </h2>
             <a
@@ -60,7 +60,7 @@ export function CatalogList() {
                     />
                   </div>
                   <span
-                    className={`mono text-body font-medium transition-colors duration-300 ${
+                    className={`mono text-[1rem] font-medium transition-colors duration-300 ${
                       activeIndex === i
                         ? "text-[var(--color-gold)]"
                         : "text-[var(--color-text-faint)]"
@@ -69,7 +69,7 @@ export function CatalogList() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span
-                    className={`font-['Clash_Display',sans-serif] text-body-l font-semibold transition-colors duration-300 ${
+                    className={`font-['Clash_Display',sans-serif] text-[1.125rem] font-semibold transition-colors duration-300 ${
                       activeIndex === i
                         ? "text-[var(--color-text)]"
                         : "text-[var(--color-text-dim)]"
@@ -115,10 +115,10 @@ export function CatalogList() {
                   {/* Overlay with category info */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[rgba(11,11,12,0.85)] via-[rgba(11,11,12,0.2)] to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-8">
-                    <h3 className="font-['Clash_Display',sans-serif] text-display-m font-semibold text-[var(--color-text)] mb-1">
+                    <h3 className="font-['Clash_Display',sans-serif] text-[clamp(1.75rem,3vw,2.75rem)] font-semibold text-[var(--color-text)] mb-1">
                       {categories[activeIndex].nome}
                     </h3>
-                    <p className="mono text-label text-[var(--color-gold)] uppercase tracking-[0.08em]">
+                    <p className="mono text-[0.75rem] text-[var(--color-gold)] uppercase tracking-[0.08em]">
                       {categories[activeIndex].count} equipamentos
                     </p>
                   </div>

@@ -10,7 +10,7 @@ export function Manifesto() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <p className="font-['Clash_Display',sans-serif] text-display-l font-semibold leading-[1.05] tracking-[-0.02em]">
+          <p className="font-['Clash_Display',sans-serif] text-[clamp(2.5rem,5vw,4.75rem)] font-semibold leading-[1.05] tracking-[-0.02em]">
             A Olympo Steel projeta e fabrica equipamentos de musculação que unem
             engenharia em aço carbono e acabamento de fábrica.
           </p>
