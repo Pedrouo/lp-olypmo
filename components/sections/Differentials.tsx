@@ -46,10 +46,10 @@ export function Differentials() {
 
         <ScrollReveal delay={0.1}>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-[var(--space-12)]">
-            <h2 className="text-[var(--font-display-l)] font-semibold leading-[1.05] max-w-[500px]">
+            <h2 className="text-[var(--font-display-m)] font-semibold leading-[1.05] max-w-[500px]">
               Engenharia que sustenta resultados.
             </h2>
-            <p className="text-[var(--font-body)] text-[var(--color-text-dim)] max-w-[340px]">
+            <p className="text-[var(--font-body-l)] text-[var(--color-text-dim)] max-w-[380px] leading-relaxed">
               Cada equipamento passa por controle dimensional, teste de carga e
               inspeção de acabamento antes de sair da fábrica.
             </p>
@@ -67,7 +67,7 @@ export function Differentials() {
                 }`}
               >
                 <span
-                  className={`mono text-[var(--font-display-m)] font-bold leading-none ${
+                  className={`mono text-[var(--font-h3)] font-bold leading-none ${
                     item.highlight
                       ? "text-[var(--color-ink)] opacity-30"
                       : "text-[var(--color-gold)]"
@@ -83,7 +83,7 @@ export function Differentials() {
                   {item.title}
                 </h3>
                 <p
-                  className={`text-[var(--font-small)] leading-relaxed ${
+                  className={`text-[var(--font-body)] leading-relaxed ${
                     item.highlight
                       ? "text-[var(--color-ink)] opacity-80"
                       : "text-[var(--color-text-dim)]"

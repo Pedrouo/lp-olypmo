@@ -29,10 +29,10 @@ export function FeaturedProduct() {
             <span className="inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] border border-[var(--color-gold)] text-[var(--color-text)] text-[var(--font-label)] font-semibold mono uppercase tracking-[0.05em]">
               Steel
             </span>
-            <h2 className="text-[var(--font-display-m)] font-semibold leading-[1.05]">
+            <h2 className="text-[var(--font-display-l)] font-semibold leading-[1.05]">
               Crossover Angular.
             </h2>
-            <p className="text-[var(--font-body)] text-[var(--color-text-dim)] leading-relaxed">
+            <p className="text-[var(--font-body-l)] text-[var(--color-text-dim)] leading-relaxed">
               Estrutura em aço carbono com sistema de cabos independentes.
               Regulagem de altura por pino, polias com rolamentos blindados.
               Capacidade para uso profissional contínuo.

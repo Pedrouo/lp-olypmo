@@ -40,7 +40,7 @@ export function Customization() {
         <ScrollReveal className="lg:col-span-6" delay={0.15}>
           <div className="flex flex-col gap-[var(--space-6)]">
             <span className="section-label">Sob medida</span>
-            <h2 className="text-[var(--font-display-l)] font-semibold leading-[1.05]">
+            <h2 className="text-[var(--font-display-m)] font-semibold leading-[1.05]">
               Configure equipamentos sob medida para o seu espaço.
             </h2>
             <p className="text-[var(--font-body-l)] text-[var(--color-text-dim)] leading-relaxed max-w-[480px]">
@@ -51,19 +51,19 @@ export function Customization() {
             <div className="flex flex-col gap-3 py-[var(--space-4)] border-t border-[var(--color-line)]">
               <div className="flex items-center gap-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-gold)]" />
-                <span className="text-[var(--font-small)] text-[var(--color-text-dim)]">
+                <span className="text-[var(--font-body)] text-[var(--color-text-dim)]">
                   Dimensões customizadas
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-gold)]" />
-                <span className="text-[var(--font-small)] text-[var(--color-text-dim)]">
+                <span className="text-[var(--font-body)] text-[var(--color-text-dim)]">
                   Cores e acabamento personalizado
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-gold)]" />
-                <span className="text-[var(--font-small)] text-[var(--color-text-dim)]">
+                <span className="text-[var(--font-body)] text-[var(--color-text-dim)]">
                   Assessoria técnica de layout
                 </span>
               </div>
