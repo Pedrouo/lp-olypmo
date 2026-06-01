@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X } from "lucide-react";
 import { categories, allProducts, allLines, MATERIAL, type Product } from "@/data/products";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Button } from "@/components/ui/Button";
+import { useSearchParams } from "next/navigation";
 
 const badgeStyle = (linha: string) => {
   const l = linha.toLowerCase();
@@ -16,11 +17,23 @@ const badgeStyle = (linha: string) => {
   return "border border-[var(--color-gold)] text-[var(--color-text)] bg-transparent";
 };
 
-export default function CatalogoPage() {
+function CatalogoContent() {
+  const searchParams = useSearchParams();
+  const categoryFromUrl = searchParams.get("categoria");
+  const lineFromUrl = searchParams.get("linha");
+
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedLine, setSelectedLine] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+  useEffect(() => {
+    setSelectedCategory(categoryFromUrl);
+  }, [categoryFromUrl]);
+
+  useEffect(() => {
+    setSelectedLine(lineFromUrl);
+  }, [lineFromUrl]);
 
   const filtered = useMemo(() => {
     let products = selectedCategory
@@ -289,5 +302,13 @@ export default function CatalogoPage() {
         )}
       </AnimatePresence>
     </div>
+  );
+}
+
+export default function CatalogoPage() {
+  return (
+    <Suspense fallback={<div className="pt-28 text-center text-sm text-[var(--color-text-dim)]">Carregando catálogo...</div>}>
+      <CatalogoContent />
+    </Suspense>
   );
 }

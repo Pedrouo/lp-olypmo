@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { ArrowRight } from "lucide-react";
 import { categories } from "@/data/products";
+import Link from "next/link";
 
 export function CatalogList() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -41,8 +42,9 @@ export function CatalogList() {
           {/* Left: Category list — 7 cols */}
           <div className="lg:col-span-7">
             {categories.map((cat, i) => (
-              <div
+              <Link
                 key={cat.id}
+                href={`/catalogo?categoria=${cat.id}`}
                 className={`group flex items-center justify-between py-[var(--space-4)] border-b border-[var(--color-line)] cursor-pointer transition-all duration-300 ${
                   activeIndex === i
                     ? "opacity-100"
@@ -92,7 +94,7 @@ export function CatalogList() {
                     }`}
                   />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 

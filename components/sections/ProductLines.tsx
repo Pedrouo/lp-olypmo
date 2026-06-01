@@ -78,7 +78,7 @@ export function ProductLines() {
                     {line.desc}
                   </p>
                   <a
-                    href="/catalogo"
+                    href={`/catalogo?linha=${line.name}`}
                     className="inline-flex items-center gap-1 text-sm text-[var(--color-gold)] font-medium hover:text-[var(--color-gold-soft)] transition-colors mt-2 group/link"
                   >
                     Explorar
