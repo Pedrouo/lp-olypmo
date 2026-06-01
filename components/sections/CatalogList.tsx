@@ -83,7 +83,7 @@ export function CatalogList() {
 
                 <div className="flex items-center gap-[var(--space-2)] sm:gap-[var(--space-4)] flex-shrink-0 ml-2">
                   <span className="mono text-xs sm:text-sm text-[var(--color-text-faint)]">
-                    ver mais
+                    Ver mais
                   </span>
                   <ArrowRight
                     size={16}
