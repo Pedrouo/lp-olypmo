@@ -336,28 +336,28 @@ function CatalogoContent() {
                 <span className="price-block">{selectedProduct.precoFmt}</span>
 
                 {/* Specs */}
-                <div className="flex flex-col gap-3 py-[var(--space-4)] border-t border-b border-[var(--color-line)]">
-                  <div className="flex justify-between">
-                    <span className="mono text-sm text-[var(--color-text-faint)]">
+                <div className="flex flex-col gap-4 py-[var(--space-4)] border-t border-b border-[var(--color-line)]">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-4">
+                    <span className="mono text-xs sm:text-sm text-[var(--color-text-faint)] uppercase tracking-wider">
                       Dimensões
                     </span>
-                    <span className="mono text-sm text-[var(--color-text)]">
+                    <span className="mono text-sm text-[var(--color-text)] sm:text-right">
                       {selectedProduct.dimensoes}
                     </span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="mono text-sm text-[var(--color-text-faint)]">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-4">
+                    <span className="mono text-xs sm:text-sm text-[var(--color-text-faint)] uppercase tracking-wider">
                       Peso
                     </span>
-                    <span className="mono text-sm text-[var(--color-text)]">
+                    <span className="mono text-sm text-[var(--color-text)] sm:text-right">
                       {selectedProduct.peso}
                     </span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="mono text-sm text-[var(--color-text-faint)]">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-4">
+                    <span className="mono text-xs sm:text-sm text-[var(--color-text-faint)] uppercase tracking-wider">
                       Material
                     </span>
-                    <span className="mono text-sm text-[var(--color-text)]">
+                    <span className="mono text-sm text-[var(--color-text)] sm:text-right sm:max-w-xs">
                       {MATERIAL}
                     </span>
                   </div>
