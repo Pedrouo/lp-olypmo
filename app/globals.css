@@ -104,6 +104,8 @@ html {
   scroll-behavior: smooth;
   background-color: var(--color-bg);
   overscroll-behavior: none;
+  scrollbar-color: var(--color-gold) var(--color-bg);
+  scrollbar-width: thin;
 }
 
 body {
@@ -196,17 +198,18 @@ h1, h2, h3, h4 {
 
 /* ── Scrollbar (dark theme) ── */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
   background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-bg-soft);
-  border-radius: 4px;
+  background: var(--color-gold);
+  border: 2px solid var(--color-bg);
+  border-radius: var(--radius-pill);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-faint);
+  background: var(--color-gold-soft);
 }
 
 /* ── Reduced motion ── */
