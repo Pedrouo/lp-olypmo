@@ -68,6 +68,7 @@ export function Nav() {
           {/* Wordmark */}
           <Link
             href="/"
+            onClick={(e) => handleLinkClick(e, "/")}
             className="font-['Clash_Display',sans-serif] text-xl font-bold tracking-[0.08em] text-[var(--color-text)] hover:text-[var(--color-gold)] transition-colors"
           >
             OLYMPO
