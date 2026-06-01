@@ -31,7 +31,7 @@ export function Marquee() {
         {Array.from({ length: 4 }).map((_, i) => (
           <span
             key={i}
-            className="mono text-[0.75rem] text-[var(--color-text-faint)] uppercase tracking-[0.12em] mr-[var(--space-8)] group-hover:[animation-play-state:paused]"
+            className="mono text-[clamp(0.875rem,1.2vw,1.125rem)] font-bold text-[var(--color-text)] uppercase tracking-[0.15em] mr-[var(--space-8)] group-hover:[animation-play-state:paused]"
           >
             {text}
           </span>
