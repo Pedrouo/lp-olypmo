@@ -17,7 +17,20 @@ export function Manifesto() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <Button href="#sobre" variant="ghost">
+          <Button
+            href="/#sobre"
+            variant="ghost"
+            onClick={(e) => {
+              if (window.location.pathname === "/") {
+                e.preventDefault();
+                const element = document.getElementById("sobre");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                  window.history.pushState(null, "", "/#sobre");
+                }
+              }
+            }}
+          >
             Sobre nós
           </Button>
         </ScrollReveal>
