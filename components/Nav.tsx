@@ -100,7 +100,7 @@ export function Nav() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:block">
-            <Button href="#contato" icon>
+            <Button href="/#contato" icon onClick={(e) => handleLinkClick(e as any, "/#contato")}>
               Pedir orçamento
             </Button>
           </div>
@@ -157,15 +157,18 @@ export function Nav() {
                 </Component>
               );
             })}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-            >
-              <Button href="#contato" icon onClick={() => setMobileOpen(false)}>
-                Pedir orçamento
-              </Button>
-            </motion.div>
+             <motion.div
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ delay: 0.5, duration: 0.5 }}
+             >
+               <Button href="/#contato" icon onClick={(e) => {
+                 handleLinkClick(e as any, "/#contato");
+                 setMobileOpen(false);
+               }}>
+                 Pedir orçamento
+               </Button>
+             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

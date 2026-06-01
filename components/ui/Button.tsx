@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { ReactNode } from "react";
+import Link from "next/link";
 
 interface ButtonProps {
   children: ReactNode;
@@ -7,7 +8,7 @@ interface ButtonProps {
   href?: string;
   className?: string;
   icon?: boolean;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
   type?: "button" | "submit";
 }
 
@@ -47,10 +48,18 @@ export function Button({
   );
 
   if (href) {
+    const isExternal = href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
+    if (isExternal) {
+      return (
+        <a href={href} className={style} onClick={onClick}>
+          {content}
+        </a>
+      );
+    }
     return (
-      <a href={href} className={style}>
+      <Link href={href} className={style} onClick={onClick}>
         {content}
-      </a>
+      </Link>
     );
   }
 

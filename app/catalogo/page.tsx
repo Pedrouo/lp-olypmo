@@ -363,7 +363,12 @@ function CatalogoContent() {
                   </div>
                 </div>
 
-                <Button href="#contato" icon className="w-full justify-center">
+                <Button
+                  href="/#contato"
+                  icon
+                  className="w-full justify-center"
+                  onClick={() => setSelectedProduct(null)}
+                >
                   Pedir orçamento
                 </Button>
               </div>
