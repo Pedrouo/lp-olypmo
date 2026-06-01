@@ -6,6 +6,7 @@ import { Differentials } from "@/components/sections/Differentials";
 import { AboutUs } from "@/components/sections/AboutUs";
 import { Customization } from "@/components/sections/Customization";
 import { Marquee } from "@/components/sections/Marquee";
+import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
@@ -33,6 +34,9 @@ export default function Home() {
 
       {/* 7. Personalização / Sob medida */}
       <Customization />
+
+      {/* 8. Contato e Orçamento */}
+      <Contact />
     </>
   );
 }

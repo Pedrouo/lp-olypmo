@@ -30,7 +30,6 @@ const navGroups = [
 export function Footer() {
   return (
     <footer
-      id="contato"
       className="relative bg-[var(--color-bg)] border-t border-[var(--color-line)] overflow-hidden"
     >
       {/* Top section */}
