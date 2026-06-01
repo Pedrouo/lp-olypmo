@@ -2,18 +2,19 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Home } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 
 const MotionLink = motion.create(Link);
 
 const links = [
-  { label: "Equipamentos", href: "#equipamentos" },
-  { label: "Linhas", href: "#linhas" },
-  { label: "Diferenciais", href: "#diferenciais" },
+  { label: "Início", href: "/" },
+  { label: "Linhas", href: "/#linhas" },
+  { label: "Equipamentos", href: "/#equipamentos" },
+  { label: "Diferenciais", href: "/#diferenciais" },
   { label: "Catálogo", href: "/catalogo" },
-  { label: "Contato", href: "#contato" },
+  { label: "Contato", href: "/#contato" },
 ];
 
 export function Nav() {
@@ -56,9 +57,13 @@ export function Nav() {
                 <Component
                   key={link.href}
                   href={link.href}
-                  className="relative text-sm font-medium text-[var(--color-text-dim)] hover:text-[var(--color-text)] transition-colors group py-1"
+                  className="relative text-sm font-medium text-[var(--color-text-dim)] hover:text-[var(--color-text)] transition-colors group py-1 flex items-center gap-1.5"
                 >
-                  {link.label}
+                  {link.label === "Início" ? (
+                    <Home size={16} className="transition-colors group-hover:text-[var(--color-gold)]" />
+                  ) : (
+                    link.label
+                  )}
                   <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--color-gold)] transition-all duration-300 group-hover:w-full" />
                 </Component>
               );
@@ -107,10 +112,17 @@ export function Nav() {
                     duration: 0.5,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="font-['Clash_Display',sans-serif] text-[clamp(1.75rem,3vw,2.75rem)] font-semibold text-[var(--color-text)] hover:text-[var(--color-gold)] transition-colors"
+                  className="font-['Clash_Display',sans-serif] text-[clamp(1.75rem,3vw,2.75rem)] font-semibold text-[var(--color-text)] hover:text-[var(--color-gold)] transition-colors flex items-center gap-3"
                   onClick={() => setMobileOpen(false)}
                 >
-                  {link.label}
+                  {link.label === "Início" ? (
+                    <>
+                      <Home size={24} />
+                      <span>Início</span>
+                    </>
+                  ) : (
+                    link.label
+                  )}
                 </Component>
               );
             })}
