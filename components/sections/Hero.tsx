@@ -97,9 +97,15 @@ export function Hero() {
 
             {/* Info */}
             <div className="flex flex-col gap-2">
-              <span className="inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] bg-[var(--color-gold)] text-[var(--color-ink)] text-[0.75rem] font-semibold mono uppercase tracking-[0.05em]">
-                Zeus
-              </span>
+              <div className="flex justify-between items-center">
+                <span className="inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] bg-[var(--color-gold)] text-[var(--color-ink)] text-[0.75rem] font-semibold mono uppercase tracking-[0.05em]">
+                  Zeus
+                </span>
+                <span className="text-[var(--color-gold)] font-semibold mono text-[0.75rem] uppercase tracking-[0.08em] flex items-center gap-1.5">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--color-gold)] animate-pulse" />
+                  Destaque
+                </span>
+              </div>
               <h3 className="text-[1.125rem] font-semibold leading-tight">
                 Pull-Over Articulado (Gold Edition)
               </h3>

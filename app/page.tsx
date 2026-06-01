@@ -3,7 +3,7 @@ import { Manifesto } from "@/components/sections/Manifesto";
 import { ProductLines } from "@/components/sections/ProductLines";
 import { CatalogList } from "@/components/sections/CatalogList";
 import { Differentials } from "@/components/sections/Differentials";
-import { FeaturedProduct } from "@/components/sections/FeaturedProduct";
+import { AboutUs } from "@/components/sections/AboutUs";
 import { Customization } from "@/components/sections/Customization";
 import { Marquee } from "@/components/sections/Marquee";
 
@@ -28,8 +28,8 @@ export default function Home() {
       {/* 5. Diferenciais 01–04 */}
       <Differentials />
 
-      {/* 6. Produto em destaque */}
-      <FeaturedProduct />
+      {/* 6. Sobre Nós */}
+      <AboutUs />
 
       {/* 7. Personalização / Sob medida */}
       <Customization />
