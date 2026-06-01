@@ -41,7 +41,7 @@ export function Contact() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] bg-[radial-gradient(circle,rgba(232,196,76,0.015)_0%,transparent_70%)]" />
       </div>
 
-      <div className="container-site relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-[var(--space-12)] lg:gap-[var(--space-16)] items-start">
+      <div className="container-site relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-[var(--space-12)] lg:gap-[var(--space-16)] lg:items-stretch items-start">
         {/* Left Column: Contact info */}
         <ScrollReveal className="lg:col-span-5 flex flex-col gap-[var(--space-6)]">
           <span className="section-label">Contato</span>
@@ -107,8 +107,8 @@ export function Contact() {
         </ScrollReveal>
 
         {/* Right Column: Form */}
-        <ScrollReveal className="lg:col-span-7" delay={0.15}>
-          <div className="w-full bg-[var(--color-bg-elev)] border border-[var(--color-line)] rounded-[var(--radius-md)] shadow-[var(--shadow-card)] p-8 relative overflow-hidden min-h-[500px] flex flex-col justify-center">
+        <ScrollReveal className="lg:col-span-7 lg:h-full" delay={0.15}>
+          <div className="w-full lg:h-full bg-[var(--color-bg-elev)] border border-[var(--color-line)] rounded-[var(--radius-md)] shadow-[var(--shadow-card)] p-8 relative overflow-hidden min-h-[500px] flex flex-col justify-center">
             <AnimatePresence mode="wait">
               {!submitted ? (
                 <motion.form
