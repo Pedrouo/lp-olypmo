@@ -110,7 +110,7 @@ export function Hero() {
               <div className="flex items-center justify-between mt-3 pt-3 border-t border-[var(--color-line)]">
                 <span className="price-block text-sm">R$ 18.800,00</span>
                 <a
-                  href="/catalogo"
+                  href="/catalogo?produto=Pull-Over Articulado (Gold Edition)"
                   className="inline-flex items-center gap-1 text-sm text-[var(--color-gold)] font-medium hover:text-[var(--color-gold-soft)] transition-colors group"
                 >
                   Ver detalhes

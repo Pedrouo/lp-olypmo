@@ -68,7 +68,7 @@ export function FeaturedProduct() {
 
             <div className="flex items-center gap-4 flex-wrap">
               <span className="price-block">R$ 19.800,00</span>
-              <Button href="/catalogo" variant="link" icon>
+              <Button href="/catalogo?produto=Crossover Angular" variant="link" icon>
                 Ver no catálogo
               </Button>
             </div>

@@ -22,6 +22,7 @@ function CatalogoContent() {
   const searchParams = useSearchParams();
   const categoryFromUrl = searchParams.get("categoria");
   const lineFromUrl = searchParams.get("linha");
+  const productFromUrl = searchParams.get("produto");
 
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -35,6 +36,17 @@ function CatalogoContent() {
   useEffect(() => {
     setSelectedLine(lineFromUrl);
   }, [lineFromUrl]);
+
+  useEffect(() => {
+    if (productFromUrl) {
+      const prod = allProducts.find(
+        (p) => p.nome.toLowerCase() === productFromUrl.toLowerCase()
+      );
+      if (prod) {
+        setSelectedProduct(prod);
+      }
+    }
+  }, [productFromUrl]);
 
   const filtered = useMemo(() => {
     let products = selectedCategory
