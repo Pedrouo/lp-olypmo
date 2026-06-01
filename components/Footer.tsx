@@ -19,13 +19,6 @@ const navGroups = [
     ],
   },
   {
-    title: "Suporte",
-    links: [
-      { label: "Personalização", href: "#sobmedida" },
-      { label: "Garantia e manutenção", href: "#" },
-    ],
-  },
-  {
     title: "Contato",
     links: [
       { label: "contato@olympsteel.com.br", href: "mailto:contato@olympsteel.com.br" },
@@ -43,27 +36,27 @@ export function Footer() {
       {/* Top section */}
       <div className="container-site pt-[var(--space-16)] pb-[var(--space-12)]">
         {/* Brand phrase */}
-        <p className="font-['Clash_Display',sans-serif] text-[clamp(1.375rem,2.2vw,2rem)] font-semibold max-w-[620px] leading-[1.15] mb-[var(--space-10)]">
+        <p className="font-['Clash_Display',sans-serif] text-[clamp(1.375rem,2.2vw,2rem)] font-semibold max-w-[620px] leading-[1.15] mb-[var(--space-16)]">
           Aço carbono, engenharia precisa, acabamento de fábrica.
         </p>
 
         {/* Link columns */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-[var(--space-8)]">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-[var(--space-10)]">
           {navGroups.map((group) => (
             <div key={group.title}>
-              <h4 className="mono text-[0.75rem] uppercase tracking-[0.08em] text-[var(--color-gold)] mb-[var(--space-4)]">
+              <h4 className="mono text-[0.875rem] uppercase tracking-[0.08em] text-[var(--color-gold)] mb-[var(--space-5)]">
                 {group.title}
               </h4>
-              <ul className="flex flex-col gap-[var(--space-2)]">
+              <ul className="flex flex-col gap-[var(--space-3)]">
                 {group.links.map((link) => (
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-sm text-[var(--color-text-dim)] hover:text-[var(--color-text)] transition-colors inline-flex items-center gap-1 group"
+                      className="text-[1.0625rem] text-[var(--color-text-dim)] hover:text-[var(--color-text)] transition-colors inline-flex items-center gap-1.5 group"
                     >
                       {link.label}
                       <ArrowUpRight
-                        size={12}
+                        size={14}
                         className="opacity-0 group-hover:opacity-100 transition-opacity"
                       />
                     </a>
@@ -87,7 +80,7 @@ export function Footer() {
 
       {/* Copyright */}
       <div className="container-site py-[var(--space-4)] border-t border-[var(--color-line)]">
-        <p className="mono text-[0.75rem] text-[var(--color-text-faint)] tracking-[0.08em] uppercase">
+        <p className="mono text-[0.875rem] text-[var(--color-text-faint)] tracking-[0.08em] uppercase">
           © 2026 Olympo Steel Ltda. Todos os direitos reservados.
         </p>
       </div>
