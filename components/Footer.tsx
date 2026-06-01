@@ -4,9 +4,9 @@ const navGroups = [
   {
     title: "Equipamentos",
     links: [
-      { label: "Peitoral", href: "/catalogo" },
-      { label: "Costas", href: "/catalogo" },
-      { label: "Pernas", href: "/catalogo" },
+      { label: "Peitoral", href: "/catalogo?categoria=peitoral" },
+      { label: "Costas", href: "/catalogo?categoria=costas" },
+      { label: "Pernas", href: "/catalogo?categoria=pernas" },
       { label: "Catálogo completo", href: "/catalogo" },
     ],
   },
@@ -80,7 +80,7 @@ export function Footer() {
 
       {/* Copyright */}
       <div className="container-site py-[var(--space-4)] border-t border-[var(--color-line)]">
-        <p className="mono text-[0.875rem] text-[var(--color-text-faint)] tracking-[0.08em] uppercase">
+        <p className="mono text-[0.875rem] text-[var(--color-text-faint)] tracking-[0.08em] uppercase text-center">
           © 2026 Olympo Steel Ltda. Todos os direitos reservados.
         </p>
       </div>
