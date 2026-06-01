@@ -48,7 +48,7 @@ export function CatalogList() {
                 className={`group flex items-center justify-between py-[var(--space-4)] border-b border-[var(--color-line)] cursor-pointer transition-all duration-300 ${
                   activeIndex === i
                     ? "opacity-100"
-                    : "opacity-55 hover:opacity-80"
+                    : "opacity-100 lg:opacity-55 lg:hover:opacity-80"
                 }`}
                 onMouseEnter={() => setActiveIndex(i)}
               >
@@ -65,7 +65,7 @@ export function CatalogList() {
                     className={`mono text-[1rem] font-medium transition-colors duration-300 flex-shrink-0 ${
                       activeIndex === i
                         ? "text-[var(--color-gold)]"
-                        : "text-[var(--color-text-faint)]"
+                        : "text-[var(--color-gold)] lg:text-[var(--color-text-faint)] lg:group-hover:text-[var(--color-gold)]"
                     }`}
                   >
                     {String(i + 1).padStart(2, "0")}
@@ -74,7 +74,7 @@ export function CatalogList() {
                     className={`font-['Clash_Display',sans-serif] text-[1rem] sm:text-[1.125rem] font-semibold transition-colors duration-300 truncate ${
                       activeIndex === i
                         ? "text-[var(--color-text)]"
-                        : "text-[var(--color-text-dim)]"
+                        : "text-[var(--color-text)] lg:text-[var(--color-text-dim)] lg:group-hover:text-[var(--color-text)]"
                     }`}
                   >
                     {cat.nome}
@@ -82,15 +82,21 @@ export function CatalogList() {
                 </div>
 
                 <div className="flex items-center gap-[var(--space-2)] sm:gap-[var(--space-4)] flex-shrink-0 ml-2">
-                  <span className="mono text-xs sm:text-sm text-[var(--color-text-faint)]">
+                  <span
+                    className={`mono text-xs sm:text-sm transition-colors duration-300 ${
+                      activeIndex === i
+                        ? "text-[var(--color-gold)]"
+                        : "text-[var(--color-text-faint)] lg:group-hover:text-[var(--color-gold)]"
+                    }`}
+                  >
                     Ver mais
                   </span>
                   <ArrowRight
                     size={16}
                     className={`transition-all duration-300 ${
                       activeIndex === i
-                        ? "text-[var(--color-gold)] translate-x-0"
-                        : "text-[var(--color-text-faint)] -translate-x-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-0"
+                        ? "text-[var(--color-gold)] translate-x-0 opacity-100"
+                        : "text-[var(--color-text-faint)] translate-x-0 lg:-translate-x-1 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:translate-x-0 lg:group-hover:text-[var(--color-gold)]"
                     }`}
                   />
                 </div>
