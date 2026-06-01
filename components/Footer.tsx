@@ -41,9 +41,9 @@ export function Footer() {
       className="relative bg-[var(--color-bg)] border-t border-[var(--color-line)] overflow-hidden"
     >
       {/* Top section */}
-      <div className="container-site pt-[var(--space-24)] pb-[var(--space-16)]">
+      <div className="container-site pt-[var(--space-16)] pb-[var(--space-12)]">
         {/* Brand phrase */}
-        <p className="font-['Clash_Display',sans-serif] text-[clamp(1.75rem,3vw,2.75rem)] font-semibold max-w-[620px] leading-[1.1] mb-[var(--space-16)]">
+        <p className="font-['Clash_Display',sans-serif] text-[clamp(1.375rem,2.2vw,2rem)] font-semibold max-w-[620px] leading-[1.15] mb-[var(--space-10)]">
           Aço carbono, engenharia precisa, acabamento de fábrica.
         </p>
 

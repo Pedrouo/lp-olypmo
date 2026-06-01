@@ -29,7 +29,7 @@ export function FeaturedProduct() {
             <span className="inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] border border-[var(--color-gold)] text-[var(--color-text)] text-[0.75rem] font-semibold mono uppercase tracking-[0.05em]">
               Steel
             </span>
-            <h2 className="text-[clamp(2.5rem,5vw,4.75rem)] font-semibold leading-[1.05]">
+            <h2 className="text-[clamp(1.75rem,3vw,2.75rem)] font-semibold leading-[1.05]">
               Crossover Angular.
             </h2>
             <p className="text-[1.125rem] text-[var(--color-text-dim)] leading-relaxed">

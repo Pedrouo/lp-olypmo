@@ -71,7 +71,7 @@ export function ProductLines() {
                   >
                     {line.name}
                   </span>
-                  <h3 className="text-[1.125rem] font-semibold">
+                  <h3 className="text-[clamp(1.375rem,2vw,1.75rem)] font-semibold">
                     Linha {line.name}.
                   </h3>
                   <p className="text-[1rem] text-[var(--color-text-dim)] leading-relaxed">

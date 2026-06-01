@@ -45,7 +45,7 @@ export default function CatalogoPage() {
         {/* Header */}
         <ScrollReveal>
           <span className="section-label mb-[var(--space-4)]">Catálogo</span>
-          <h1 className="text-display-l font-semibold leading-[1.05] mb-[var(--space-4)]">
+          <h1 className="text-[clamp(2rem,4.5vw,3.5rem)] font-semibold leading-[1.05] mb-[var(--space-4)]">
             Todos os equipamentos.
           </h1>
           <p className="text-body text-[var(--color-text-dim)] max-w-[520px] mb-[var(--space-12)]">
@@ -75,7 +75,7 @@ export default function CatalogoPage() {
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setSelectedCategory(null)}
-              className={`px-3 py-2 rounded-[var(--radius-pill)] text-label mono uppercase tracking-[0.05em] transition-colors cursor-pointer ${
+              className={`px-3 py-2 rounded-[var(--radius-pill)] text-[0.75rem] mono uppercase tracking-[0.05em] transition-colors cursor-pointer ${
                 !selectedCategory
                   ? "bg-[var(--color-gold)] text-[var(--color-ink)]"
                   : "border border-[var(--color-line)] text-[var(--color-text-dim)] hover:border-[var(--color-line-strong)]"
@@ -91,7 +91,7 @@ export default function CatalogoPage() {
                     selectedCategory === cat.id ? null : cat.id
                   )
                 }
-                className={`px-3 py-2 rounded-[var(--radius-pill)] text-label mono uppercase tracking-[0.05em] transition-colors cursor-pointer ${
+                className={`px-3 py-2 rounded-[var(--radius-pill)] text-[0.75rem] mono uppercase tracking-[0.05em] transition-colors cursor-pointer ${
                   selectedCategory === cat.id
                     ? "bg-[var(--color-gold)] text-[var(--color-ink)]"
                     : "border border-[var(--color-line)] text-[var(--color-text-dim)] hover:border-[var(--color-line-strong)]"
@@ -110,7 +110,7 @@ export default function CatalogoPage() {
                 onClick={() =>
                   setSelectedLine(selectedLine === line ? null : line)
                 }
-                className={`px-3 py-2 rounded-[var(--radius-pill)] text-label mono uppercase tracking-[0.05em] transition-colors cursor-pointer ${
+                className={`px-3 py-2 rounded-[var(--radius-pill)] text-[0.75rem] mono uppercase tracking-[0.05em] transition-colors cursor-pointer ${
                   selectedLine === line
                     ? "bg-[var(--color-gold)] text-[var(--color-ink)]"
                     : "border border-[var(--color-line)] text-[var(--color-text-dim)] hover:border-[var(--color-line-strong)]"
@@ -123,7 +123,7 @@ export default function CatalogoPage() {
         </div>
 
         {/* Results count */}
-        <p className="mono text-label text-[var(--color-text-faint)] uppercase tracking-[0.08em] mb-[var(--space-6)]">
+        <p className="mono text-[0.75rem] text-[var(--color-text-faint)] uppercase tracking-[0.08em] mb-[var(--space-6)]">
           {filtered.length} resultado{filtered.length !== 1 ? "s" : ""}
         </p>
 
@@ -234,7 +234,7 @@ export default function CatalogoPage() {
                       <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                     </svg>
                   </div>
-                  <span className="mono text-label text-[var(--color-text-faint)] uppercase tracking-[0.08em]">
+                  <span className="mono text-[0.75rem] text-[var(--color-text-faint)] uppercase tracking-[0.08em]">
                     {selectedProduct.linha}
                   </span>
                 </div>
@@ -243,11 +243,11 @@ export default function CatalogoPage() {
               {/* Content */}
               <div className="p-[var(--space-6)] flex flex-col gap-4">
                 <span
-                  className={`inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] text-label font-semibold mono uppercase tracking-[0.05em] ${badgeStyle(selectedProduct.linha)}`}
+                  className={`inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] text-[0.75rem] font-semibold mono uppercase tracking-[0.05em] ${badgeStyle(selectedProduct.linha)}`}
                 >
                   {selectedProduct.linha}
                 </span>
-                <h2 className="font-['Clash_Display',sans-serif] text-display-m font-semibold leading-[1.05]">
+                <h2 className="font-['Clash_Display',sans-serif] text-[clamp(1.5rem,2.5vw,2.25rem)] font-semibold leading-[1.05]">
                   {selectedProduct.nome}
                 </h2>
                 <span className="price-block">{selectedProduct.precoFmt}</span>

@@ -60,33 +60,35 @@ export function Differentials() {
           {items.map((item) => (
             <StaggerItem key={item.num}>
               <div
-                className={`p-[var(--space-6)] rounded-[var(--radius-sm)] border h-full flex flex-col gap-4 transition-colors ${
+                className={`group p-[var(--space-6)] rounded-[var(--radius-sm)] border h-full flex flex-col gap-4 transition-all duration-300 cursor-default ${
                   item.highlight
-                    ? "bg-[var(--color-gold)] border-[var(--color-gold)] text-[var(--color-ink)]"
-                    : "bg-[var(--color-bg-soft)] border-[var(--color-line)] hover:border-[var(--color-line-strong)]"
+                    ? "bg-[var(--color-gold)] border-[var(--color-gold)] text-[var(--color-ink)] hover:bg-[var(--color-gold-soft)] hover:border-[var(--color-gold-soft)]"
+                    : "bg-[var(--color-bg-soft)] border-[var(--color-line)] hover:bg-[var(--color-gold)] hover:border-[var(--color-gold)]"
                 }`}
               >
                 <span
-                  className={`mono text-[clamp(1.25rem,2vw,1.625rem)] font-bold leading-none ${
+                  className={`mono text-[clamp(1.25rem,2vw,1.625rem)] font-bold leading-none transition-colors duration-300 ${
                     item.highlight
                       ? "text-[var(--color-ink)] opacity-30"
-                      : "text-[var(--color-gold)]"
+                      : "text-[var(--color-gold)] group-hover:text-[var(--color-ink)] group-hover:opacity-30"
                   }`}
                 >
                   {item.num}
                 </span>
                 <h3
-                  className={`font-['Clash_Display',sans-serif] text-[clamp(1.25rem,2vw,1.625rem)] font-semibold ${
-                    item.highlight ? "text-[var(--color-ink)]" : ""
+                  className={`font-['Clash_Display',sans-serif] text-[clamp(1.25rem,2vw,1.625rem)] font-semibold transition-colors duration-300 ${
+                    item.highlight
+                      ? "text-[var(--color-ink)]"
+                      : "group-hover:text-[var(--color-ink)]"
                   }`}
                 >
                   {item.title}
                 </h3>
                 <p
-                  className={`text-[1rem] leading-relaxed ${
+                  className={`text-[1rem] leading-relaxed transition-colors duration-300 ${
                     item.highlight
                       ? "text-[var(--color-ink)] opacity-80"
-                      : "text-[var(--color-text-dim)]"
+                      : "text-[var(--color-text-dim)] group-hover:text-[var(--color-ink)] group-hover:opacity-80"
                   }`}
                 >
                   {item.desc}
