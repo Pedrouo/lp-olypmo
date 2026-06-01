@@ -17,7 +17,7 @@ export function Manifesto() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <Button href="#sobmedida" variant="ghost">
+          <Button href="#sobre" variant="ghost">
             Sobre nós
           </Button>
         </ScrollReveal>
