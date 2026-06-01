@@ -7,6 +7,7 @@ import { categories, allProducts, allLines, MATERIAL, type Product } from "@/dat
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Button } from "@/components/ui/Button";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 const badgeStyle = (linha: string) => {
   const l = linha.toLowerCase();
@@ -169,11 +170,13 @@ function CatalogoContent() {
 
               {/* Info */}
               <div className="p-[var(--space-4)] bg-[var(--color-bg)] flex flex-col gap-2">
-                <span
-                  className={`inline-flex w-fit px-2 py-0.5 rounded-[var(--radius-pill)] text-[10px] font-semibold mono uppercase tracking-[0.05em] ${badgeStyle(product.linha)}`}
+                <Link
+                  href="/#linhas"
+                  onClick={(e) => e.stopPropagation()}
+                  className={`inline-flex w-fit px-2 py-0.5 rounded-[var(--radius-pill)] text-[10px] font-semibold mono uppercase tracking-[0.05em] hover:scale-105 transition-transform duration-200 cursor-pointer ${badgeStyle(product.linha)}`}
                 >
                   {product.linha}
-                </span>
+                </Link>
                 <h3 className="font-['Clash_Display',sans-serif] text-body font-semibold leading-tight line-clamp-2">
                   {product.nome}
                 </h3>
@@ -248,11 +251,12 @@ function CatalogoContent() {
 
               {/* Content */}
               <div className="p-[var(--space-6)] flex flex-col gap-4">
-                <span
-                  className={`inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] text-[0.75rem] font-semibold mono uppercase tracking-[0.05em] ${badgeStyle(selectedProduct.linha)}`}
+                <Link
+                  href="/#linhas"
+                  className={`inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] text-[0.75rem] font-semibold mono uppercase tracking-[0.05em] hover:scale-105 transition-transform duration-200 cursor-pointer ${badgeStyle(selectedProduct.linha)}`}
                 >
                   {selectedProduct.linha}
-                </span>
+                </Link>
                 <h2 className="font-['Clash_Display',sans-serif] text-[clamp(1.5rem,2.5vw,2.25rem)] font-semibold leading-[1.05]">
                   {selectedProduct.nome}
                 </h2>

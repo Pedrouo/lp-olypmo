@@ -13,9 +13,9 @@ const navGroups = [
   {
     title: "Linhas",
     links: [
-      { label: "Steel", href: "#linhas" },
-      { label: "Zeus", href: "#linhas" },
-      { label: "BSC", href: "#linhas" },
+      { label: "Steel", href: "/#linhas" },
+      { label: "Zeus", href: "/#linhas" },
+      { label: "BSC", href: "/#linhas" },
     ],
   },
   {
