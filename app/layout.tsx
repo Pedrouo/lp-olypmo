@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${jetbrainsMono.variable} antialiased`}>
+    <html lang="pt-BR" className={`${jetbrainsMono.variable} antialiased bg-[var(--color-bg)]`}>
       <head>
         {/* Fontshare — Clash Display + General Sans */}
         <link
