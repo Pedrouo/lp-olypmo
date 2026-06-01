@@ -53,6 +53,33 @@ function CatalogoContent() {
     return products;
   }, [search, selectedCategory, selectedLine]);
 
+  // Determina quais categorias possuem produtos com base na linha selecionada e na busca
+  const categoriesWithProducts = useMemo(() => {
+    return categories.map((cat) => {
+      const hasProducts = cat.produtos.some((p) => {
+        const matchesLine = !selectedLine || p.linha === selectedLine;
+        const matchesSearch = !search.trim() || p.nome.toLowerCase().includes(search.toLowerCase());
+        return matchesLine && matchesSearch;
+      });
+      return { id: cat.id, hasProducts };
+    });
+  }, [selectedLine, search]);
+
+  // Determina quais linhas possuem produtos com base na categoria selecionada e na busca
+  const linesWithProducts = useMemo(() => {
+    const baseProducts = selectedCategory
+      ? categories.find((c) => c.id === selectedCategory)?.produtos || []
+      : allProducts;
+
+    const activeLines = new Set(
+      baseProducts
+        .filter((p) => !search.trim() || p.nome.toLowerCase().includes(search.toLowerCase()))
+        .map((p) => p.linha)
+    );
+
+    return activeLines;
+  }, [selectedCategory, search]);
+
   return (
     <div className="pt-28 pb-[var(--space-24)]">
       <div className="container-site">
@@ -88,53 +115,77 @@ function CatalogoContent() {
           {/* Row 2: Filters */}
           <div className="flex flex-col lg:flex-row gap-6 justify-between lg:items-start">
             {/* Category filter */}
-            <div className="flex flex-wrap gap-2 flex-1 max-w-3xl">
-              <button
-                onClick={() => setSelectedCategory(null)}
-                className={`px-3 py-2 rounded-[var(--radius-pill)] text-[0.75rem] mono uppercase tracking-[0.05em] transition-colors cursor-pointer ${
-                  !selectedCategory
-                    ? "bg-[var(--color-gold)] text-[var(--color-ink)]"
-                    : "border border-[var(--color-line)] text-[var(--color-text-dim)] hover:border-[var(--color-line-strong)]"
-                }`}
-              >
-                Todas
-              </button>
-              {categories.map((cat) => (
+            <div className="flex flex-col gap-2 flex-1 max-w-3xl">
+              <span className="mono text-[10px] text-[var(--color-text-dim)] uppercase tracking-[0.08em] mb-1">
+                Filtrar por Equipamento / Grupo Muscular
+              </span>
+              <div className="flex flex-wrap gap-2">
                 <button
-                  key={cat.id}
-                  onClick={() =>
-                    setSelectedCategory(
-                      selectedCategory === cat.id ? null : cat.id
-                    )
-                  }
+                  onClick={() => setSelectedCategory(null)}
                   className={`px-3 py-2 rounded-[var(--radius-pill)] text-[0.75rem] mono uppercase tracking-[0.05em] transition-colors cursor-pointer ${
-                    selectedCategory === cat.id
+                    !selectedCategory
                       ? "bg-[var(--color-gold)] text-[var(--color-ink)]"
                       : "border border-[var(--color-line)] text-[var(--color-text-dim)] hover:border-[var(--color-line-strong)]"
                   }`}
                 >
-                  {cat.nome}
+                  Todas
                 </button>
-              ))}
+                {categories.map((cat) => {
+                  const isAvailable = categoriesWithProducts.find((c) => c.id === cat.id)?.hasProducts;
+                  const isSelected = selectedCategory === cat.id;
+                  return (
+                    <button
+                      key={cat.id}
+                      disabled={!isAvailable && !isSelected}
+                      onClick={() =>
+                        setSelectedCategory(
+                          isSelected ? null : cat.id
+                        )
+                      }
+                      className={`px-3 py-2 rounded-[var(--radius-pill)] text-[0.75rem] mono uppercase tracking-[0.05em] transition-colors cursor-pointer ${
+                        isSelected
+                          ? "bg-[var(--color-gold)] text-[var(--color-ink)]"
+                          : isAvailable
+                          ? "border border-[var(--color-line)] text-[var(--color-text-dim)] hover:border-[var(--color-line-strong)]"
+                          : "border border-[var(--color-line)] text-[var(--color-text-faint)] opacity-30 cursor-not-allowed pointer-events-none"
+                      }`}
+                    >
+                      {cat.nome}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Line filter */}
-            <div className="flex flex-wrap gap-2 lg:justify-end max-w-md">
-              {allLines.map((line) => (
-                <button
-                  key={line}
-                  onClick={() =>
-                    setSelectedLine(selectedLine === line ? null : line)
-                  }
-                  className={`px-3 py-2 rounded-[var(--radius-pill)] text-[0.75rem] mono uppercase tracking-[0.05em] transition-colors cursor-pointer ${
-                    selectedLine === line
-                      ? "bg-[var(--color-gold)] text-[var(--color-ink)]"
-                      : "border border-[var(--color-line)] text-[var(--color-text-dim)] hover:border-[var(--color-line-strong)]"
-                  }`}
-                >
-                  {line}
-                </button>
-              ))}
+            <div className="flex flex-col gap-2 lg:items-end max-w-md w-full">
+              <span className="mono text-[10px] text-[var(--color-text-dim)] uppercase tracking-[0.08em] mb-1">
+                Filtrar por Linha
+              </span>
+              <div className="flex flex-wrap gap-2 lg:justify-end">
+                {allLines.map((line) => {
+                  const isAvailable = linesWithProducts.has(line);
+                  const isSelected = selectedLine === line;
+                  return (
+                    <button
+                      key={line}
+                      disabled={!isAvailable && !isSelected}
+                      onClick={() =>
+                        setSelectedLine(selectedLine === line ? null : line)
+                      }
+                      className={`px-3 py-2 rounded-[var(--radius-pill)] text-[0.75rem] mono uppercase tracking-[0.05em] transition-colors cursor-pointer ${
+                        isSelected
+                          ? "bg-[var(--color-gold)] text-[var(--color-ink)]"
+                          : isAvailable
+                          ? "border border-[var(--color-line)] text-[var(--color-text-dim)] hover:border-[var(--color-line-strong)]"
+                          : "border border-[var(--color-line)] text-[var(--color-text-faint)] opacity-30 cursor-not-allowed pointer-events-none"
+                      }`}
+                    >
+                      {line}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
