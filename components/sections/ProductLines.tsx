@@ -45,7 +45,7 @@ export function ProductLines() {
 
         <ScrollReveal delay={0.1}>
           <div className="flex items-start justify-between mb-[var(--space-12)] flex-wrap gap-4">
-            <h2 className="text-[var(--font-display-m)] font-semibold leading-[1.05] max-w-[500px]">
+            <h2 className="text-display-m font-semibold leading-[1.05] max-w-[500px]">
               Três linhas, um padrão.
             </h2>
           </div>
@@ -67,19 +67,19 @@ export function ProductLines() {
                 {/* Content */}
                 <div className="p-[var(--space-6)] bg-[var(--color-bg)] flex flex-col gap-3">
                   <span
-                    className={`inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] text-[var(--font-label)] font-semibold mono uppercase tracking-[0.05em] ${badgeStyles[line.badge]}`}
+                    className={`inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] text-label font-semibold mono uppercase tracking-[0.05em] ${badgeStyles[line.badge]}`}
                   >
                     {line.name}
                   </span>
-                  <h3 className="text-[var(--font-body-l)] font-semibold">
+                  <h3 className="text-body-l font-semibold">
                     Linha {line.name}.
                   </h3>
-                  <p className="text-[var(--font-body)] text-[var(--color-text-dim)] leading-relaxed">
+                  <p className="text-body text-[var(--color-text-dim)] leading-relaxed">
                     {line.desc}
                   </p>
                   <a
                     href="/catalogo"
-                    className="inline-flex items-center gap-1 text-[var(--font-small)] text-[var(--color-gold)] font-medium hover:text-[var(--color-gold-soft)] transition-colors mt-2 group/link"
+                    className="inline-flex items-center gap-1 text-sm text-[var(--color-gold)] font-medium hover:text-[var(--color-gold-soft)] transition-colors mt-2 group/link"
                   >
                     Explorar
                     <ArrowRight

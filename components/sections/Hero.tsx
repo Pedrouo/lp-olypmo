@@ -31,7 +31,7 @@ export function Hero() {
           </motion.div>
 
           {/* Title — reveal by line */}
-          <h1 className="text-[var(--font-display-xl)] font-bold leading-[0.95] tracking-[-0.02em]">
+          <h1 className="text-display-xl font-bold leading-[0.95] tracking-[-0.02em]">
             {titleLines.map((line, i) => (
               <span key={i} className="block overflow-hidden">
                 <motion.span
@@ -55,7 +55,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6, ease: easeOut }}
-            className="text-[var(--font-h3)] font-normal text-[var(--color-text-dim)] max-w-[520px] leading-[1.5]"
+            className="text-h3 font-normal text-[var(--color-text-dim)] max-w-[520px] leading-[1.5]"
           >
             A Olympo Steel projeta e fabrica equipamentos de musculação em aço
             carbono com pintura eletrostática. Durabilidade profissional,
@@ -97,13 +97,13 @@ export function Hero() {
 
             {/* Info */}
             <div className="flex flex-col gap-2">
-              <span className="inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] bg-[var(--color-gold)] text-[var(--color-ink)] text-[var(--font-label)] font-semibold mono uppercase tracking-[0.05em]">
+              <span className="inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] bg-[var(--color-gold)] text-[var(--color-ink)] text-label font-semibold mono uppercase tracking-[0.05em]">
                 Zeus
               </span>
-              <h3 className="text-[var(--font-body-l)] font-semibold leading-tight">
+              <h3 className="text-body-l font-semibold leading-tight">
                 Pull-Over Articulado (Gold Edition)
               </h3>
-              <p className="text-[var(--font-body)] text-[var(--color-text-dim)] leading-relaxed">
+              <p className="text-body text-[var(--color-text-dim)] leading-relaxed">
                 Linha premium com torre de pesos integrada. Carenagem e
                 acabamento de alto padrão.
               </p>
@@ -111,7 +111,7 @@ export function Hero() {
                 <span className="price-block text-sm">R$ 18.800,00</span>
                 <a
                   href="/catalogo"
-                  className="inline-flex items-center gap-1 text-[var(--font-small)] text-[var(--color-gold)] font-medium hover:text-[var(--color-gold-soft)] transition-colors group"
+                  className="inline-flex items-center gap-1 text-sm text-[var(--color-gold)] font-medium hover:text-[var(--color-gold-soft)] transition-colors group"
                 >
                   Ver detalhes
                   <ArrowRight

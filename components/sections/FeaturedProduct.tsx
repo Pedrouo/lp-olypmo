@@ -26,13 +26,13 @@ export function FeaturedProduct() {
         <ScrollReveal className="lg:col-span-5" delay={0.15}>
           <div className="flex flex-col gap-[var(--space-6)]">
             <span className="section-label">Destaque</span>
-            <span className="inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] border border-[var(--color-gold)] text-[var(--color-text)] text-[var(--font-label)] font-semibold mono uppercase tracking-[0.05em]">
+            <span className="inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] border border-[var(--color-gold)] text-[var(--color-text)] text-label font-semibold mono uppercase tracking-[0.05em]">
               Steel
             </span>
-            <h2 className="text-[var(--font-display-l)] font-semibold leading-[1.05]">
+            <h2 className="text-display-l font-semibold leading-[1.05]">
               Crossover Angular.
             </h2>
-            <p className="text-[var(--font-body-l)] text-[var(--color-text-dim)] leading-relaxed">
+            <p className="text-body-l text-[var(--color-text-dim)] leading-relaxed">
               Estrutura em aço carbono com sistema de cabos independentes.
               Regulagem de altura por pino, polias com rolamentos blindados.
               Capacidade para uso profissional contínuo.
@@ -41,26 +41,26 @@ export function FeaturedProduct() {
             {/* Specs */}
             <div className="flex flex-col gap-2 py-[var(--space-4)] border-t border-b border-[var(--color-line)]">
               <div className="flex justify-between">
-                <span className="mono text-[var(--font-small)] text-[var(--color-text-faint)]">
+                <span className="mono text-sm text-[var(--color-text-faint)]">
                   Dimensões
                 </span>
-                <span className="mono text-[var(--font-small)] text-[var(--color-text)]">
+                <span className="mono text-sm text-[var(--color-text)]">
                   2,40m (L) x 1,10m (P) x 2,30m (A)
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="mono text-[var(--font-small)] text-[var(--color-text-faint)]">
+                <span className="mono text-sm text-[var(--color-text-faint)]">
                   Peso
                 </span>
-                <span className="mono text-[var(--font-small)] text-[var(--color-text)]">
+                <span className="mono text-sm text-[var(--color-text)]">
                   390 kg
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="mono text-[var(--font-small)] text-[var(--color-text-faint)]">
+                <span className="mono text-sm text-[var(--color-text-faint)]">
                   Material
                 </span>
-                <span className="mono text-[var(--font-small)] text-[var(--color-text)]">
+                <span className="mono text-sm text-[var(--color-text)]">
                   Aço Carbono | Pintura Eletrostática
                 </span>
               </div>

@@ -43,7 +43,7 @@ export function Footer() {
       {/* Top section */}
       <div className="container-site pt-[var(--space-24)] pb-[var(--space-16)]">
         {/* Brand phrase */}
-        <p className="font-['Clash_Display',sans-serif] text-[var(--font-display-m)] font-semibold max-w-[620px] leading-[1.1] mb-[var(--space-16)]">
+        <p className="font-['Clash_Display',sans-serif] text-display-m font-semibold max-w-[620px] leading-[1.1] mb-[var(--space-16)]">
           Aço carbono, engenharia precisa, acabamento de fábrica.
         </p>
 
@@ -51,7 +51,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-[var(--space-8)]">
           {navGroups.map((group) => (
             <div key={group.title}>
-              <h4 className="mono text-[var(--font-label)] uppercase tracking-[0.08em] text-[var(--color-gold)] mb-[var(--space-4)]">
+              <h4 className="mono text-label uppercase tracking-[0.08em] text-[var(--color-gold)] mb-[var(--space-4)]">
                 {group.title}
               </h4>
               <ul className="flex flex-col gap-[var(--space-2)]">
@@ -59,7 +59,7 @@ export function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-[var(--font-small)] text-[var(--color-text-dim)] hover:text-[var(--color-text)] transition-colors inline-flex items-center gap-1 group"
+                      className="text-sm text-[var(--color-text-dim)] hover:text-[var(--color-text)] transition-colors inline-flex items-center gap-1 group"
                     >
                       {link.label}
                       <ArrowUpRight
@@ -87,7 +87,7 @@ export function Footer() {
 
       {/* Copyright */}
       <div className="container-site py-[var(--space-4)] border-t border-[var(--color-line)]">
-        <p className="mono text-[var(--font-label)] text-[var(--color-text-faint)] tracking-[0.08em] uppercase">
+        <p className="mono text-label text-[var(--color-text-faint)] tracking-[0.08em] uppercase">
           © 2026 Olympo Steel Ltda. Todos os direitos reservados.
         </p>
       </div>
