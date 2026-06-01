@@ -27,6 +27,31 @@ export function Nav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href === "/" || href.startsWith("/#")) {
+      const pathname = window.location.pathname;
+      if (pathname === "/") {
+        e.preventDefault();
+        
+        if (mobileOpen) {
+          setMobileOpen(false);
+        }
+
+        const targetId = href === "/" ? null : href.replace("/#", "");
+        if (targetId) {
+          const element = document.getElementById(targetId);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+            window.history.pushState(null, "", href);
+          }
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          window.history.pushState(null, "", "/");
+        }
+      }
+    }
+  };
+
   return (
     <>
       <motion.header
@@ -57,6 +82,7 @@ export function Nav() {
                 <Component
                   key={link.href}
                   href={link.href}
+                  onClick={(e) => handleLinkClick(e, link.href)}
                   className="relative text-sm font-medium text-[var(--color-text-dim)] hover:text-[var(--color-text)] transition-colors group py-1 flex items-center gap-1.5"
                 >
                   {link.label === "Início" ? (
@@ -113,7 +139,10 @@ export function Nav() {
                     ease: [0.16, 1, 0.3, 1],
                   }}
                   className="font-['Clash_Display',sans-serif] text-[clamp(1.75rem,3vw,2.75rem)] font-semibold text-[var(--color-text)] hover:text-[var(--color-gold)] transition-colors flex items-center gap-3"
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => {
+                    handleLinkClick(e as any, link.href);
+                    setMobileOpen(false);
+                  }}
                 >
                   {link.label === "Início" ? (
                     <>
