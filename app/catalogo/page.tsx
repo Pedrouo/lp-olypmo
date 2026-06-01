@@ -68,9 +68,9 @@ function CatalogoContent() {
         </ScrollReveal>
 
         {/* Filters bar */}
-        <div className="flex flex-col md:flex-row gap-4 mb-[var(--space-8)] pb-[var(--space-6)] border-b border-[var(--color-line)]">
-          {/* Search */}
-          <div className="relative flex-1 max-w-md">
+        <div className="flex flex-col gap-6 mb-[var(--space-8)] pb-[var(--space-6)] border-b border-[var(--color-line)]">
+          {/* Row 1: Search bar */}
+          <div className="relative w-full max-w-md">
             <Search
               size={16}
               className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-text-faint)]"
@@ -80,58 +80,61 @@ function CatalogoContent() {
               placeholder="Buscar por nome..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-9 pr-4 py-3 bg-[var(--color-bg-soft)] border border-[var(--color-line)] rounded-[var(--radius-sm)] text-sm text-[var(--color-text)] placeholder:text-[var(--color-text-faint)] focus:border-[var(--color-gold)] focus:outline-none transition-colors"
+              className="w-full pl-9 pr-4 py-2.5 bg-[var(--color-bg-soft)] border border-[var(--color-line)] rounded-[var(--radius-sm)] text-sm text-[var(--color-text)] placeholder:text-[var(--color-text-faint)] focus:border-[var(--color-gold)] focus:outline-none transition-colors"
             />
           </div>
 
-          {/* Category filter */}
-          <div className="flex flex-wrap gap-2">
-            <button
-              onClick={() => setSelectedCategory(null)}
-              className={`px-3 py-2 rounded-[var(--radius-pill)] text-[0.75rem] mono uppercase tracking-[0.05em] transition-colors cursor-pointer ${
-                !selectedCategory
-                  ? "bg-[var(--color-gold)] text-[var(--color-ink)]"
-                  : "border border-[var(--color-line)] text-[var(--color-text-dim)] hover:border-[var(--color-line-strong)]"
-              }`}
-            >
-              Todas
-            </button>
-            {categories.map((cat) => (
+          {/* Row 2: Filters */}
+          <div className="flex flex-col lg:flex-row gap-6 justify-between lg:items-start">
+            {/* Category filter */}
+            <div className="flex flex-wrap gap-2 flex-1 max-w-3xl">
               <button
-                key={cat.id}
-                onClick={() =>
-                  setSelectedCategory(
-                    selectedCategory === cat.id ? null : cat.id
-                  )
-                }
+                onClick={() => setSelectedCategory(null)}
                 className={`px-3 py-2 rounded-[var(--radius-pill)] text-[0.75rem] mono uppercase tracking-[0.05em] transition-colors cursor-pointer ${
-                  selectedCategory === cat.id
+                  !selectedCategory
                     ? "bg-[var(--color-gold)] text-[var(--color-ink)]"
                     : "border border-[var(--color-line)] text-[var(--color-text-dim)] hover:border-[var(--color-line-strong)]"
                 }`}
               >
-                {cat.nome}
+                Todas
               </button>
-            ))}
-          </div>
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() =>
+                    setSelectedCategory(
+                      selectedCategory === cat.id ? null : cat.id
+                    )
+                  }
+                  className={`px-3 py-2 rounded-[var(--radius-pill)] text-[0.75rem] mono uppercase tracking-[0.05em] transition-colors cursor-pointer ${
+                    selectedCategory === cat.id
+                      ? "bg-[var(--color-gold)] text-[var(--color-ink)]"
+                      : "border border-[var(--color-line)] text-[var(--color-text-dim)] hover:border-[var(--color-line-strong)]"
+                  }`}
+                >
+                  {cat.nome}
+                </button>
+              ))}
+            </div>
 
-          {/* Line filter */}
-          <div className="flex flex-wrap gap-2">
-            {allLines.map((line) => (
-              <button
-                key={line}
-                onClick={() =>
-                  setSelectedLine(selectedLine === line ? null : line)
-                }
-                className={`px-3 py-2 rounded-[var(--radius-pill)] text-[0.75rem] mono uppercase tracking-[0.05em] transition-colors cursor-pointer ${
-                  selectedLine === line
-                    ? "bg-[var(--color-gold)] text-[var(--color-ink)]"
-                    : "border border-[var(--color-line)] text-[var(--color-text-dim)] hover:border-[var(--color-line-strong)]"
-                }`}
-              >
-                {line}
-              </button>
-            ))}
+            {/* Line filter */}
+            <div className="flex flex-wrap gap-2 lg:justify-end max-w-md">
+              {allLines.map((line) => (
+                <button
+                  key={line}
+                  onClick={() =>
+                    setSelectedLine(selectedLine === line ? null : line)
+                  }
+                  className={`px-3 py-2 rounded-[var(--radius-pill)] text-[0.75rem] mono uppercase tracking-[0.05em] transition-colors cursor-pointer ${
+                    selectedLine === line
+                      ? "bg-[var(--color-gold)] text-[var(--color-ink)]"
+                      : "border border-[var(--color-line)] text-[var(--color-text-dim)] hover:border-[var(--color-line-strong)]"
+                  }`}
+                >
+                  {line}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -183,10 +186,10 @@ function CatalogoContent() {
                   {product.precoFmt}
                 </span>
                 <div className="flex flex-col gap-1 mt-2 pt-2 border-t border-[var(--color-line)]">
-                  <span className="mono text-[10px] text-[var(--color-text-faint)]">
+                  <span className="mono text-[11px] text-[var(--color-text-dim)]">
                     {product.dimensoes}
                   </span>
-                  <span className="mono text-[10px] text-[var(--color-text-faint)]">
+                  <span className="mono text-[11px] text-[var(--color-text-dim)]">
                     {product.peso}
                   </span>
                 </div>
