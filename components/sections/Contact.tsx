@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Button } from "@/components/ui/Button";
 import { Mail, Phone, MapPin, CheckCircle2, ArrowRight } from "lucide-react";
@@ -16,12 +16,47 @@ export function Contact() {
     mensagem: "",
   });
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const productParam = params.get("produto");
+      if (productParam) {
+        setForm((prev) => ({
+          ...prev,
+          mensagem: `Olá, tenho interesse no equipamento ${productParam} e gostaria de solicitar um orçamento detalhado.`,
+        }));
+        
+        if (window.location.hash === "#contato" || window.location.href.includes("contato")) {
+          const element = document.getElementById("contato");
+          if (element) {
+            setTimeout(() => {
+              element.scrollIntoView({ behavior: "smooth" });
+            }, 150);
+          }
+        }
+      }
+    }
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate submission
-    setTimeout(() => {
-      setSubmitted(true);
-    }, 400);
+    
+    // Construct WhatsApp message
+    const msg = `Olá Olympo Steel! Gostaria de solicitar um orçamento:\n\n` +
+      `*Nome:* ${form.nome}\n` +
+      `*E-mail:* ${form.email}\n` +
+      `*WhatsApp:* ${form.telefone}\n` +
+      (form.academia ? `*Academia/Empresa:* ${form.academia}\n` : "") +
+      `\n*Interesse / Mensagem:*\n${form.mensagem}`;
+      
+    const encodedMsg = encodeURIComponent(msg);
+    // WhatsApp number placeholder (replace with real Olympo number if needed)
+    const whatsappUrl = `https://wa.me/5500000000000?text=${encodedMsg}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    
+    setSubmitted(true);
   };
 
   const handleInputChange = (

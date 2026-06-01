@@ -364,7 +364,7 @@ function CatalogoContent() {
                 </div>
 
                 <Button
-                  href="/#contato"
+                  href={`/?produto=${encodeURIComponent(selectedProduct.nome)}#contato`}
                   icon
                   className="w-full justify-center"
                   onClick={() => setSelectedProduct(null)}
