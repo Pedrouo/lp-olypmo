@@ -48,6 +48,20 @@ function CatalogoContent() {
     }
   }, [productFromUrl]);
 
+  useEffect(() => {
+    if (selectedProduct) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
+  }, [selectedProduct]);
+
   const filtered = useMemo(() => {
     let products = selectedCategory
       ? categories.find((c) => c.id === selectedCategory)?.produtos || []
@@ -305,6 +319,7 @@ function CatalogoContent() {
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="w-full max-w-lg bg-[var(--color-bg-elev)] border border-[var(--color-line)] rounded-[var(--radius-md)] overflow-hidden max-h-[85vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
+              data-lenis-prevent
             >
               {/* Image */}
               <div className="w-full aspect-[4/3] overflow-hidden relative">
