@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Button } from "@/components/ui/Button";
 import { Mail, Phone, MapPin, CheckCircle2, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export function Contact() {
+function ContactContent() {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     nome: "",
@@ -16,27 +17,52 @@ export function Contact() {
     mensagem: "",
   });
 
+  const searchParams = useSearchParams();
+  const productParam = searchParams.get("produto");
+
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search);
-      const productParam = params.get("produto");
-      if (productParam) {
-        setForm((prev) => ({
-          ...prev,
-          mensagem: `Olá, tenho interesse no equipamento ${productParam} e gostaria de solicitar um orçamento detalhado.`,
-        }));
-        
-        if (window.location.hash === "#contato" || window.location.href.includes("contato")) {
-          const element = document.getElementById("contato");
-          if (element) {
-            setTimeout(() => {
-              element.scrollIntoView({ behavior: "smooth" });
-            }, 150);
+    if (productParam) {
+      setForm((prev) => ({
+        ...prev,
+        mensagem: `Olá, tenho interesse no equipamento ${productParam} e gostaria de solicitar um orçamento detalhado.`,
+      }));
+    }
+
+    const hasContatoHash = typeof window !== "undefined" && (window.location.hash === "#contato" || window.location.href.includes("contato"));
+    if (hasContatoHash || productParam) {
+      const handleScroll = () => {
+        const element = document.getElementById("contato");
+        if (element) {
+          const lenis = (window as any).lenis;
+          const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          if (lenis) {
+            lenis.scrollTo(element, { duration: 1.2 });
+            return true;
+          } else if (prefersReducedMotion) {
+            element.scrollIntoView({ behavior: "auto" });
+            return true;
+          } else {
+            return false;
           }
         }
-      }
+        return false;
+      };
+
+      // Try immediately
+      if (handleScroll()) return;
+
+      // Retry periodically (e.g. while Lenis hydrates or renders)
+      let count = 0;
+      const interval = setInterval(() => {
+        count++;
+        if (handleScroll() || count > 30) {
+          clearInterval(interval);
+        }
+      }, 100);
+
+      return () => clearInterval(interval);
     }
-  }, []);
+  }, [productParam]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -291,5 +317,13 @@ export function Contact() {
         </ScrollReveal>
       </div>
     </section>
+  );
+}
+
+export function Contact() {
+  return (
+    <Suspense fallback={null}>
+      <ContactContent />
+    </Suspense>
   );
 }

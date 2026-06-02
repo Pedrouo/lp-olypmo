@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Home } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const MotionLink = motion.create(Link);
 
@@ -23,6 +23,8 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  const pendingScrollTargetRef = useRef<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80);
@@ -32,21 +34,37 @@ export function Nav() {
 
   // Scroll to hash on page load or client-side route transitions
   useEffect(() => {
-    const hash = window.location.hash;
-    if (hash) {
-      setTimeout(() => {
-        const targetId = hash.replace("#", "");
-        const element = document.getElementById(targetId);
-        if (element) {
-          const lenis = (window as any).lenis;
-          if (lenis) {
-            lenis.scrollTo(element, { duration: 1.2 });
-          } else {
-            element.scrollIntoView({ behavior: "smooth" });
-          }
-        }
-      }, 200); // Wait for page hydration & stabilization
-    }
+    const handleHashScroll = () => {
+      // Use stored target first (set on cross-page navigation), then fall back to URL hash
+      const targetId = pendingScrollTargetRef.current || window.location.hash.replace("#", "");
+      if (!targetId) return false;
+      const element = document.getElementById(targetId);
+      if (!element) return false;
+      pendingScrollTargetRef.current = null;
+      const lenis = (window as any).lenis;
+      if (lenis) {
+        lenis.scrollTo(element, { duration: 1.2 });
+      } else if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        element.scrollIntoView({ behavior: "auto" });
+      } else {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+      return true;
+    };
+
+    // Try immediately
+    if (handleHashScroll()) return;
+
+    // Retry periodically if the page is still mounting/hydrating
+    let count = 0;
+    const interval = setInterval(() => {
+      count++;
+      if (handleHashScroll() || count > 30) {
+        clearInterval(interval);
+      }
+    }, 100);
+
+    return () => clearInterval(interval);
   }, [pathname]);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -80,6 +98,18 @@ export function Nav() {
           }
           window.history.pushState(null, "", "/");
         }
+      } else {
+        // We are on a different page, e.g. /catalogo.
+        // Navigate programmatically to the home page with the hash.
+        e.preventDefault();
+        if (mobileOpen) {
+          setMobileOpen(false);
+        }
+        // Store scroll target in ref since router.push may not set window.location.hash reliably
+        if (href.startsWith("/#")) {
+          pendingScrollTargetRef.current = href.slice(2);
+        }
+        router.push(href, { scroll: false });
       }
     }
   };

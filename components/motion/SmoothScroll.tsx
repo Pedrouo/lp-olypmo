@@ -13,6 +13,10 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
 
     if (prefersReducedMotion) return;
 
+    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
     const lenis = new Lenis({
       lerp: 0.1,
       smoothWheel: true,

@@ -6,7 +6,7 @@ import { Search, X, ArrowUp } from "lucide-react";
 import { categories, allProducts, allLines, MATERIAL, type Product } from "@/data/products";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Button } from "@/components/ui/Button";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 
 const badgeStyle = (linha: string) => {
@@ -24,6 +24,7 @@ function CatalogoContent() {
   const lineFromUrl = searchParams.get("linha");
   const productFromUrl = searchParams.get("produto");
 
+  const router = useRouter();
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedLine, setSelectedLine] = useState<string | null>(null);
@@ -442,10 +443,13 @@ function CatalogoContent() {
                 </div>
 
                 <Button
-                  href={`/?produto=${encodeURIComponent(selectedProduct.nome)}#contato`}
+                  onClick={() => {
+                    const nome = selectedProduct.nome;
+                    setSelectedProduct(null);
+                    router.push(`/?produto=${encodeURIComponent(nome)}`, { scroll: false });
+                  }}
                   icon
                   className="w-full justify-center"
-                  onClick={() => setSelectedProduct(null)}
                 >
                   Pedir orçamento
                 </Button>

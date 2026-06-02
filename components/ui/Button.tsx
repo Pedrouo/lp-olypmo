@@ -10,6 +10,7 @@ interface ButtonProps {
   icon?: boolean;
   onClick?: (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
   type?: "button" | "submit";
+  scroll?: boolean;
 }
 
 export function Button({
@@ -20,6 +21,7 @@ export function Button({
   icon = false,
   onClick,
   type = "button",
+  scroll,
 }: ButtonProps) {
   const base =
     "inline-flex items-center gap-2 font-['Clash_Display',sans-serif] font-semibold transition-all min-h-[44px] cursor-pointer";
@@ -57,7 +59,7 @@ export function Button({
       );
     }
     return (
-      <Link href={href} className={style} onClick={onClick}>
+      <Link href={href} className={style} onClick={onClick} scroll={scroll}>
         {content}
       </Link>
     );
