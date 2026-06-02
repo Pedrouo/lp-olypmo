@@ -42,8 +42,6 @@ export function Nav() {
       const timer = setTimeout(() => {
         const el = document.getElementById(targetId);
         if (!el) return;
-        // Update URL to reflect the target section
-        window.history.replaceState(null, "", `/#${targetId}`);
         const lenis = (window as any).lenis;
         if (lenis) {
           lenis.scrollTo(el, { duration: 1.2 });
@@ -123,9 +121,9 @@ export function Nav() {
         if (href.startsWith("/#")) {
           pendingScrollTargetRef.current = href.slice(2);
         }
-        // Navigate to "/" with scroll:true so Next.js resets to position 0,
-        // giving Lenis a clean starting state before the scroll animation.
-        router.push("/", { scroll: true });
+        // Use scroll:true so Next.js resets position to 0 before animation.
+        // Pass the full href (with hash) so the URL is set correctly.
+        router.push(href, { scroll: true });
       }
     }
   };
