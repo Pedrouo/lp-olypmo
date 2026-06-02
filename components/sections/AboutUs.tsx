@@ -44,16 +44,16 @@ export function AboutUs() {
         {/* Right Col: Info & Pillars */}
         <ScrollReveal className="lg:col-span-6 order-1 lg:order-2" delay={0.15}>
           <div className="flex flex-col gap-[var(--space-6)]">
-            <span className="section-label !text-[var(--color-gold-deep)] font-bold text-xs sm:text-sm tracking-wider">Nossa Engenharia</span>
-            
+            <span className="section-label !text-[var(--color-gold-deep)] font-bold text-xs sm:text-sm tracking-wider">Sobre nós</span>
+
             <h2 className="text-[clamp(1.75rem,3vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-black">
               Forjada na precisão,<br />construída para durar.
             </h2>
-            
+
             <p className="text-[1.0625rem] text-neutral-800 leading-relaxed">
               A Olympo Steel nasceu com o propósito de fabricar equipamentos de força com o mais alto nível de engenharia mecânica. Combinamos robustez industrial, biomecânica precisa e acabamento estético de alto padrão, atendendo às necessidades das maiores academias e centros de treinamento do país.
             </p>
- 
+
             {/* Pillars Grid */}
             <div className="grid grid-cols-1 gap-5 mt-4 pt-6 border-t border-neutral-300">
               {pillars.map((p, idx) => (
