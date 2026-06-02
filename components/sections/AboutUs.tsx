@@ -44,7 +44,7 @@ export function AboutUs() {
         {/* Right Col: Info & Pillars */}
         <ScrollReveal className="lg:col-span-6 order-1 lg:order-2" delay={0.15}>
           <div className="flex flex-col gap-[var(--space-6)]">
-            <span className="section-label !text-[var(--color-gold-deep)] font-bold text-xs sm:text-sm tracking-wider">Sobre nós</span>
+            <span className="section-label !text-[var(--color-gold-deep)] font-bold text-xs sm:text-sm tracking-wider">Nossa Engenharia</span>
             
             <h2 className="text-[clamp(1.75rem,3vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-black">
               Forjada na precisão,<br />construída para durar.
