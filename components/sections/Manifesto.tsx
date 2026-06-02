@@ -27,7 +27,12 @@ export function Manifesto() {
                 e.preventDefault();
                 const element = document.getElementById("sobre");
                 if (element) {
-                  element.scrollIntoView({ behavior: "smooth" });
+                  const lenis = (window as any).lenis;
+                  if (lenis) {
+                    lenis.scrollTo(element, { duration: 1.2 });
+                  } else {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
                   window.history.pushState(null, "", "/#sobre");
                 }
               }
