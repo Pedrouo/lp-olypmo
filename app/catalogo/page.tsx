@@ -317,7 +317,7 @@ function CatalogoContent() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 16, scale: 0.97 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="w-full max-w-lg bg-[var(--color-bg-elev)] border border-[var(--color-line)] rounded-[var(--radius-md)] overflow-hidden max-h-[85vh] overflow-y-auto"
+              className="w-full max-w-lg bg-[var(--color-bg-elev)] border border-[var(--color-line)] rounded-[var(--radius-md)] overflow-hidden max-h-[85vh] overflow-y-auto scrollbar-hidden"
               onClick={(e) => e.stopPropagation()}
               data-lenis-prevent
             >

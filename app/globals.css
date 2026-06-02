@@ -221,3 +221,12 @@ h1, h2, h3, h4 {
     scroll-behavior: auto !important;
   }
 }
+
+/* ── Hide scrollbar utility ── */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
