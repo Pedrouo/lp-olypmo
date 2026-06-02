@@ -35,16 +35,18 @@ export function Nav() {
   // Scroll to hash on page load or client-side route transitions
   useEffect(() => {
     if (pendingScrollTargetRef.current) {
-      // Cross-page navigation: delay so the new page fully lays out before scrolling
+      // Cross-page navigation: Next.js reset scroll to 0 (scroll:true),
+      // wait for layout to stabilize, then animate to target.
       const targetId = pendingScrollTargetRef.current;
       pendingScrollTargetRef.current = null;
       const timer = setTimeout(() => {
         const el = document.getElementById(targetId);
         if (!el) return;
+        // Update URL to reflect the target section
+        window.history.replaceState(null, "", `/#${targetId}`);
         const lenis = (window as any).lenis;
         if (lenis) {
-          const top = el.getBoundingClientRect().top + window.scrollY;
-          lenis.scrollTo(top, { duration: 1.2 });
+          lenis.scrollTo(el, { duration: 1.2 });
         } else {
           el.scrollIntoView({
             behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
@@ -114,16 +116,16 @@ export function Nav() {
         }
       } else {
         // We are on a different page, e.g. /catalogo.
-        // Navigate programmatically to the home page with the hash.
         e.preventDefault();
         if (mobileOpen) {
           setMobileOpen(false);
         }
-        // Store scroll target in ref since router.push may not set window.location.hash reliably
         if (href.startsWith("/#")) {
           pendingScrollTargetRef.current = href.slice(2);
         }
-        router.push(href, { scroll: false });
+        // Navigate to "/" with scroll:true so Next.js resets to position 0,
+        // giving Lenis a clean starting state before the scroll animation.
+        router.push("/", { scroll: true });
       }
     }
   };
