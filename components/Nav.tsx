@@ -34,36 +34,50 @@ export function Nav() {
 
   // Scroll to hash on page load or client-side route transitions
   useEffect(() => {
-    const handleHashScroll = () => {
-      // Use stored target first (set on cross-page navigation), then fall back to URL hash
-      const targetId = pendingScrollTargetRef.current || window.location.hash.replace("#", "");
-      if (!targetId) return false;
-      const element = document.getElementById(targetId);
-      if (!element) return false;
+    if (pendingScrollTargetRef.current) {
+      // Cross-page navigation: delay so the new page fully lays out before scrolling
+      const targetId = pendingScrollTargetRef.current;
       pendingScrollTargetRef.current = null;
+      const timer = setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (!el) return;
+        const lenis = (window as any).lenis;
+        if (lenis) {
+          const top = el.getBoundingClientRect().top + window.scrollY;
+          lenis.scrollTo(top, { duration: 1.2 });
+        } else {
+          el.scrollIntoView({
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+          });
+        }
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+
+    // Same-page or initial load: read hash from URL
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
+
+    const tryScroll = () => {
+      const el = document.getElementById(hash);
+      if (!el) return false;
       const lenis = (window as any).lenis;
       if (lenis) {
-        lenis.scrollTo(element, { duration: 1.2 });
+        lenis.scrollTo(el, { duration: 1.2 });
       } else if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        element.scrollIntoView({ behavior: "auto" });
+        el.scrollIntoView({ behavior: "auto" });
       } else {
-        element.scrollIntoView({ behavior: "smooth" });
+        el.scrollIntoView({ behavior: "smooth" });
       }
       return true;
     };
 
-    // Try immediately
-    if (handleHashScroll()) return;
-
-    // Retry periodically if the page is still mounting/hydrating
+    if (tryScroll()) return;
     let count = 0;
     const interval = setInterval(() => {
       count++;
-      if (handleHashScroll() || count > 30) {
-        clearInterval(interval);
-      }
+      if (tryScroll() || count > 30) clearInterval(interval);
     }, 100);
-
     return () => clearInterval(interval);
   }, [pathname]);
 

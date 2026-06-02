@@ -29,39 +29,40 @@ function ContactContent() {
     }
 
     const hasContatoHash = typeof window !== "undefined" && (window.location.hash === "#contato" || window.location.href.includes("contato"));
-    if (hasContatoHash || productParam) {
-      const handleScroll = () => {
-        const element = document.getElementById("contato");
-        if (element) {
-          const lenis = (window as any).lenis;
-          const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-          if (lenis) {
-            lenis.scrollTo(element, { duration: 1.2 });
-            return true;
-          } else if (prefersReducedMotion) {
-            element.scrollIntoView({ behavior: "auto" });
-            return true;
-          } else {
-            return false;
-          }
-        }
-        return false;
-      };
+    if (!hasContatoHash && !productParam) return;
 
-      // Try immediately
+    const handleScroll = () => {
+      const element = document.getElementById("contato");
+      if (!element) return false;
+      const lenis = (window as any).lenis;
+      if (lenis) {
+        const top = element.getBoundingClientRect().top + window.scrollY;
+        lenis.scrollTo(top, { duration: 1.2 });
+        return true;
+      } else if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        element.scrollIntoView({ behavior: "auto" });
+        return true;
+      } else {
+        element.scrollIntoView({ behavior: "smooth" });
+        return true;
+      }
+    };
+
+    // Delay to let the page fully lay out before scrolling
+    let intervalId: ReturnType<typeof setInterval>;
+    const timerId = setTimeout(() => {
       if (handleScroll()) return;
-
-      // Retry periodically (e.g. while Lenis hydrates or renders)
       let count = 0;
-      const interval = setInterval(() => {
+      intervalId = setInterval(() => {
         count++;
-        if (handleScroll() || count > 30) {
-          clearInterval(interval);
-        }
+        if (handleScroll() || count > 20) clearInterval(intervalId);
       }, 100);
+    }, 150);
 
-      return () => clearInterval(interval);
-    }
+    return () => {
+      clearTimeout(timerId);
+      clearInterval(intervalId);
+    };
   }, [productParam]);
 
   const handleSubmit = (e: React.FormEvent) => {
