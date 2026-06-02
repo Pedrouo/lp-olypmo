@@ -118,12 +118,18 @@ export function Nav() {
         if (mobileOpen) {
           setMobileOpen(false);
         }
+        // If it's an in-page anchor on the home page (e.g. "/#contato"),
+        // perform a full navigation so the browser can land on the hash
+        // and scroll to the target reliably. Client-side push sometimes
+        // fails to scroll to hashes across routes in some setups.
         if (href.startsWith("/#")) {
-          pendingScrollTargetRef.current = href.slice(2);
+          // Directly navigate the browser to the full href (causes a normal
+          // page load which will jump to the hash when available).
+          window.location.href = href;
+          return;
         }
-        // Use scroll:true so Next.js resets position to 0 before animation.
-        // Pass the full href (with hash) so the URL is set correctly.
-        router.push(href, { scroll: true });
+        // Otherwise perform a normal client-side route push.
+        router.push(href);
       }
     }
   };

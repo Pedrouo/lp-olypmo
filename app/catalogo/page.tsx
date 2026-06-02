@@ -446,7 +446,9 @@ function CatalogoContent() {
                   onClick={() => {
                     const nome = selectedProduct.nome;
                     setSelectedProduct(null);
-                    router.push(`/?produto=${encodeURIComponent(nome)}`, { scroll: false });
+                    // Use full-page navigation so the browser lands on the hash
+                    // and the contact form can be reached reliably from this route.
+                    window.location.href = `/?produto=${encodeURIComponent(nome)}#contato`;
                   }}
                   icon
                   className="w-full justify-center"
