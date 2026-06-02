@@ -13,8 +13,16 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-[var(--color-bg)]">
       {/* Background atmosphere */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-bg)] via-[var(--color-bg)] to-[rgba(232,196,76,0.03)]" />
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Background image with low opacity */}
+        <img
+          src="/Hero1.png"
+          alt="Hero Background"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.3]"
+        />
+        {/* Gradients to blend image seamlessly */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--color-bg)]/50 to-[var(--color-bg)]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-bg)] via-transparent to-[rgba(232,196,76,0.03)]" />
         <div className="absolute top-1/4 right-0 w-[60vw] h-[60vw] bg-[radial-gradient(circle,rgba(232,196,76,0.06)_0%,transparent_70%)] blur-3xl" />
       </div>
 

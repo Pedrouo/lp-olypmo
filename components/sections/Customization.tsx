@@ -10,7 +10,7 @@ export function Customization() {
       <div className="container-site grid grid-cols-1 lg:grid-cols-12 gap-[var(--space-12)] items-center">
         {/* Left: Image with glass card — 6 cols */}
         <ScrollReveal className="lg:col-span-6">
-          <div className="relative w-full aspect-[4/3] rounded-[var(--radius-md)] overflow-hidden border border-[var(--color-line)]">
+          <div className="relative w-full aspect-[4/3] min-h-[360px] sm:min-h-0 rounded-[var(--radius-md)] overflow-hidden border border-[var(--color-line)]">
             {/* Image */}
             <img
               src="/academia.webp"
@@ -21,7 +21,7 @@ export function Customization() {
             <div className="absolute inset-0 bg-[rgba(11,11,12,0.45)]" />
 
             {/* Glass card overlay */}
-            <div className="absolute bottom-6 left-6 right-6 bg-[rgba(20,20,22,0.6)] backdrop-blur-[16px] border border-[var(--color-line)] rounded-[var(--radius-md)] p-5">
+            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 bg-[rgba(20,20,22,0.6)] backdrop-blur-[16px] border border-[var(--color-line)] rounded-[var(--radius-md)] p-4 sm:p-5">
               <h3 className="font-['Clash_Display',sans-serif] text-[clamp(1.25rem,2vw,1.625rem)] font-semibold mb-2">
                 Vamos conversar.
               </h3>

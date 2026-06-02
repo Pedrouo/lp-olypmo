@@ -13,25 +13,25 @@ export function CatalogList() {
   return (
     <section
       id="equipamentos"
-      className="py-[var(--space-32)] md:py-[var(--space-40)] bg-[var(--color-bg)] border-t border-[var(--color-line)]"
+      className="py-[var(--space-32)] md:py-[var(--space-40)] bg-neutral-200 border-t border-b border-neutral-300"
     >
       <div className="container-site">
         <ScrollReveal>
-          <span className="section-label mb-[var(--space-4)]">Catálogo</span>
+          <span className="section-label !text-[var(--color-gold-deep)] font-bold text-xs sm:text-sm tracking-wider mb-[var(--space-4)]">Catálogo</span>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-[var(--space-12)]">
-            <h2 className="text-[clamp(1.75rem,3vw,2.75rem)] font-semibold leading-[1.05] max-w-[560px]">
+            <h2 className="text-[clamp(1.75rem,3vw,2.75rem)] font-semibold leading-[1.05] max-w-[560px] text-black">
               Nossos sistemas para cada grupo muscular.
             </h2>
             <a
               href="/catalogo"
-              className="inline-flex items-center gap-2 text-sm text-[var(--color-gold)] font-medium hover:text-[var(--color-gold-soft)] transition-colors group"
+              className="inline-flex items-center gap-2 text-sm sm:text-base text-[var(--color-gold-deep)] font-bold hover:text-[var(--color-gold)] transition-colors group"
             >
               Ver todos os produtos
               <ArrowRight
-                size={14}
+                size={16}
                 className="transition-transform group-hover:translate-x-1"
               />
             </a>
@@ -45,11 +45,7 @@ export function CatalogList() {
               <Link
                 key={cat.id}
                 href={`/catalogo?categoria=${cat.id}`}
-                className={`group flex items-center justify-between py-[var(--space-4)] border-b border-[var(--color-line)] cursor-pointer transition-all duration-300 ${
-                  activeIndex === i
-                    ? "opacity-100"
-                    : "opacity-100 lg:opacity-55 lg:hover:opacity-80"
-                }`}
+                className="group flex items-center justify-between py-[var(--space-4)] border-b border-neutral-300 cursor-pointer transition-all duration-300"
                 onMouseEnter={() => setActiveIndex(i)}
               >
                 <div className="flex items-center gap-[var(--space-4)] min-w-0">
@@ -64,8 +60,8 @@ export function CatalogList() {
                   <span
                     className={`mono text-[1rem] font-medium transition-colors duration-300 flex-shrink-0 ${
                       activeIndex === i
-                        ? "text-[var(--color-gold)]"
-                        : "text-[var(--color-gold)] lg:text-[var(--color-text-faint)] lg:group-hover:text-[var(--color-gold)]"
+                        ? "text-black lg:text-[var(--color-gold-deep)]"
+                        : "text-black lg:group-hover:text-[var(--color-gold-deep)]"
                     }`}
                   >
                     {String(i + 1).padStart(2, "0")}
@@ -73,8 +69,8 @@ export function CatalogList() {
                   <span
                     className={`font-['Clash_Display',sans-serif] text-[1rem] sm:text-[1.125rem] font-semibold transition-colors duration-300 truncate ${
                       activeIndex === i
-                        ? "text-[var(--color-text)]"
-                        : "text-[var(--color-text)] lg:text-[var(--color-text-dim)] lg:group-hover:text-[var(--color-text)]"
+                        ? "text-black lg:text-neutral-500"
+                        : "text-black lg:group-hover:text-neutral-500"
                     }`}
                   >
                     {cat.nome}
@@ -83,10 +79,10 @@ export function CatalogList() {
 
                 <div className="flex items-center gap-[var(--space-2)] sm:gap-[var(--space-4)] flex-shrink-0 ml-2">
                   <span
-                    className={`mono text-xs sm:text-sm transition-colors duration-300 ${
+                    className={`mono text-xs sm:text-sm font-bold transition-colors duration-300 ${
                       activeIndex === i
                         ? "text-[var(--color-gold)]"
-                        : "text-[var(--color-text-faint)] lg:group-hover:text-[var(--color-gold)]"
+                        : "text-[var(--color-gold-deep)] lg:group-hover:text-[var(--color-gold)]"
                     }`}
                   >
                     Ver mais
@@ -96,7 +92,7 @@ export function CatalogList() {
                     className={`transition-all duration-300 ${
                       activeIndex === i
                         ? "text-[var(--color-gold)] translate-x-0 opacity-100"
-                        : "text-[var(--color-text-faint)] translate-x-0 lg:-translate-x-1 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:translate-x-0 lg:group-hover:text-[var(--color-gold)]"
+                        : "text-[var(--color-gold-deep)] translate-x-0 lg:-translate-x-1 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:translate-x-0 lg:group-hover:text-[var(--color-gold)]"
                     }`}
                   />
                 </div>
@@ -104,8 +100,8 @@ export function CatalogList() {
             ))}
           </div>
 
-          <div className="hidden lg:flex lg:col-span-5 items-center justify-center">
-            <div className="relative w-full aspect-[4/5] rounded-[var(--radius-md)] overflow-hidden">
+          <div className="hidden lg:flex lg:col-span-5 items-stretch">
+            <div className="relative w-full h-full rounded-[var(--radius-md)] overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}

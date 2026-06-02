@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, X } from "lucide-react";
+import { Search, X, ArrowUp } from "lucide-react";
 import { categories, allProducts, allLines, MATERIAL, type Product } from "@/data/products";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Button } from "@/components/ui/Button";
@@ -28,6 +28,8 @@ function CatalogoContent() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedLine, setSelectedLine] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [visibleCount, setVisibleCount] = useState(10);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     setSelectedCategory(categoryFromUrl);
@@ -61,6 +63,54 @@ function CatalogoContent() {
       document.documentElement.style.overflow = "";
     };
   }, [selectedProduct]);
+
+  useEffect(() => {
+    setVisibleCount(10);
+  }, [search, selectedCategory, selectedLine]);
+
+  useEffect(() => {
+    // Reset scroll to top on next animation frames and timeout to ensure Lenis and Next.js DOM sync
+    let frameId: number;
+    const resetScroll = () => {
+      const lenis = (window as any).lenis;
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
+      }
+    };
+
+    resetScroll();
+    frameId = requestAnimationFrame(() => {
+      resetScroll();
+      frameId = requestAnimationFrame(() => {
+        resetScroll();
+      });
+    });
+
+    const timer = setTimeout(resetScroll, 100);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      clearTimeout(timer);
+    };
+  }, [categoryFromUrl, lineFromUrl]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const filtered = useMemo(() => {
     let products = selectedCategory
@@ -233,13 +283,13 @@ function CatalogoContent() {
 
         {/* Product grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[var(--space-6)]">
-          {filtered.map((product, i) => (
+          {filtered.slice(0, visibleCount).map((product, i) => (
             <motion.article
               key={`${product.nome}-${i}`}
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
-                delay: Math.min(i * 0.03, 0.3),
+                delay: Math.min((i % 10) * 0.03, 0.3),
                 duration: 0.4,
                 ease: [0.22, 1, 0.36, 1],
               }}
@@ -282,6 +332,19 @@ function CatalogoContent() {
             </motion.article>
           ))}
         </div>
+
+        {/* Load More Button */}
+        {filtered.length > visibleCount && (
+          <div className="flex justify-center mt-[var(--space-12)]">
+            <Button
+              onClick={() => setVisibleCount((prev) => prev + 10)}
+              variant="primary"
+              className="min-w-[200px] justify-center"
+            >
+              Ver mais
+            </Button>
+          </div>
+        )}
 
         {filtered.length === 0 && (
           <div className="text-center py-[var(--space-16)]">
@@ -389,6 +452,26 @@ function CatalogoContent() {
               </div>
             </motion.div>
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Floating Scroll to Top Button */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8, y: 16 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 16 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            onClick={scrollToTop}
+            className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 w-12 h-12 rounded-full bg-[var(--color-gold)] text-[var(--color-ink)] hover:bg-[var(--color-gold-soft)] hover:scale-110 active:scale-90 shadow-[0_4px_20px_rgba(232,196,76,0.3)] flex items-center justify-center cursor-pointer transition-all duration-300 group"
+            aria-label="Voltar ao topo"
+          >
+            <ArrowUp
+              size={20}
+              className="transition-transform duration-300 group-hover:-translate-y-0.5"
+            />
+          </motion.button>
         )}
       </AnimatePresence>
     </div>

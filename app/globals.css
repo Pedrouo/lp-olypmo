@@ -152,8 +152,9 @@ h1, h2, h3, h4 {
 
 /* ── Section label (mono caixa-alta) ── */
 .section-label {
-  font-family: 'JetBrains Mono', 'Space Mono', monospace;
-  font-size: var(--font-label);
+  font-family: var(--font-jetbrains), 'JetBrains Mono', 'Space Mono', monospace;
+  font-size: 0.8125rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--color-gold);
@@ -168,13 +169,13 @@ h1, h2, h3, h4 {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: var(--color-gold);
+  background-color: currentColor;
   flex-shrink: 0;
 }
 
 /* ── Specs / mono ── */
 .mono {
-  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+  font-family: var(--font-jetbrains), 'JetBrains Mono', 'Space Mono', monospace;
 }
 
 /* ── Price block ── */
