@@ -11,7 +11,7 @@ import { Contact } from "@/components/sections/Contact";
 export default function Home() {
   return (
     <>
-      {/* 1. Hero — Full-bleed escuro */}
+      {/* 1. Hero: Full-bleed escuro */}
       <Hero />
 
       {/* 2. Manifesto / Sobre */}
@@ -23,10 +23,10 @@ export default function Home() {
       {/* 3. Linhas de produto */}
       <ProductLines />
 
-      {/* 4. Catálogo por categorias — bloco-assinatura */}
+      {/* 4. Catálogo por categorias: bloco-assinatura */}
       <CatalogList />
 
-      {/* 5. Diferenciais 01–04 */}
+      {/* 5. Diferenciais 01 a 04 */}
       <Differentials />
 
       {/* 6. Sobre Nós */}

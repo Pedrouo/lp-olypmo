@@ -46,7 +46,7 @@ export function Customization() {
             <p className="text-[1.125rem] text-[var(--color-text-dim)] leading-relaxed max-w-[480px]">
               Cada academia tem um layout, um público e uma rotina.
               Dimensionamos, ajustamos e fabricamos equipamentos que se encaixam
-              no projeto — sem adaptação forçada, sem comprometer a biomecânica.
+              no projeto, sem adaptação forçada, sem comprometer a biomecânica.
             </p>
             <div className="flex flex-col gap-3 py-[var(--space-4)] border-t border-[var(--color-line)]">
               <div className="flex items-center gap-3">

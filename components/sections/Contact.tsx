@@ -134,7 +134,7 @@ export function Contact() {
                   Fábrica & Showroom
                 </span>
                 <span className="text-[1rem] font-medium text-[var(--color-text-dim)]">
-                  Distrito Industrial, Bento Gonçalves - RS
+                  Distrito Industrial, Bento Gonçalves, RS
                 </span>
               </div>
             </div>

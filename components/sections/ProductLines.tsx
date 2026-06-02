@@ -59,7 +59,7 @@ export function ProductLines() {
                 <div className="w-full aspect-[4/3] overflow-hidden">
                   <img
                     src="/academia.webp"
-                    alt={`Linha ${line.name} - ${line.example}`}
+                    alt={`Linha ${line.name}, exemplo: ${line.example}`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                   />
                 </div>
