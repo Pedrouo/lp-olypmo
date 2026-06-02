@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Home } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { usePathname } from "next/navigation";
 
 const MotionLink = motion.create(Link);
 
@@ -21,6 +22,7 @@ const links = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80);
@@ -28,10 +30,29 @@ export function Nav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Scroll to hash on page load or client-side route transitions
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        const targetId = hash.replace("#", "");
+        const element = document.getElementById(targetId);
+        if (element) {
+          const lenis = (window as any).lenis;
+          if (lenis) {
+            lenis.scrollTo(element, { duration: 1.2 });
+          } else {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      }, 200); // Wait for page hydration & stabilization
+    }
+  }, [pathname]);
+
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href === "/" || href.startsWith("/#")) {
-      const pathname = window.location.pathname;
-      if (pathname === "/") {
+      const currentPath = window.location.pathname;
+      if (currentPath === "/") {
         e.preventDefault();
         
         if (mobileOpen) {
@@ -42,11 +63,21 @@ export function Nav() {
         if (targetId) {
           const element = document.getElementById(targetId);
           if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
+            const lenis = (window as any).lenis;
+            if (lenis) {
+              lenis.scrollTo(element, { duration: 1.2 });
+            } else {
+              element.scrollIntoView({ behavior: "smooth" });
+            }
             window.history.pushState(null, "", href);
           }
         } else {
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          const lenis = (window as any).lenis;
+          if (lenis) {
+            lenis.scrollTo(0, { duration: 1.2 });
+          } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
           window.history.pushState(null, "", "/");
         }
       }
