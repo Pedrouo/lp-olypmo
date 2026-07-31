@@ -1,29 +1,42 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, useCallback, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Button } from "@/components/ui/Button";
+import { categories } from "@/data/products";
 import { Mail, Phone, MapPin, CheckCircle2, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-function ContactContent() {
+// Lê o parâmetro da URL isoladamente dentro do Suspense, sem elementos
+// interativos, para não impedir a hidratação do formulário.
+function SearchParamsBridge({ onProduct }: { onProduct: (produto: string | null) => void }) {
+  const searchParams = useSearchParams();
+  const productParam = searchParams.get("produto");
+
+  useEffect(() => {
+    onProduct(productParam);
+  }, [productParam, onProduct]);
+
+  return null;
+}
+
+function ContactContent({ productParam }: { productParam: string | null }) {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     nome: "",
     email: "",
     telefone: "",
     academia: "",
+    equipamento: "",
     mensagem: "",
   });
-
-  const searchParams = useSearchParams();
-  const productParam = searchParams.get("produto");
 
   useEffect(() => {
     if (productParam) {
       setForm((prev) => ({
         ...prev,
+        equipamento: productParam,
         mensagem: `Olá, tenho interesse no equipamento ${productParam} e gostaria de solicitar um orçamento detalhado.`,
       }));
     }
@@ -74,11 +87,11 @@ function ContactContent() {
       `*E-mail:* ${form.email}\n` +
       `*WhatsApp:* ${form.telefone}\n` +
       (form.academia ? `*Academia/Empresa:* ${form.academia}\n` : "") +
-      `\n*Interesse / Mensagem:*\n${form.mensagem}`;
-      
+      (form.equipamento ? `*Equipamento de interesse:* ${form.equipamento}\n` : "") +
+      (form.mensagem.trim() ? `\n*Mensagem:*\n${form.mensagem}` : "");
+
     const encodedMsg = encodeURIComponent(msg);
-    // WhatsApp number placeholder (replace with real Olympo number if needed)
-    const whatsappUrl = `https://wa.me/5500000000000?text=${encodedMsg}`;
+    const whatsappUrl = `https://wa.me/5537998749559?text=${encodedMsg}`;
     
     // Open WhatsApp in a new tab
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
@@ -87,7 +100,7 @@ function ContactContent() {
   };
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -117,7 +130,7 @@ function ContactContent() {
           <div className="flex flex-col gap-6 mt-4">
             {/* Mail */}
             <a
-              href="mailto:contato@olympsteel.com.br"
+              href="mailto:olympo_steel@outlook.com"
               className="flex items-center gap-4 group p-4 rounded-[var(--radius-md)] bg-[var(--color-bg-elev)] border border-[var(--color-line)] hover:border-[var(--color-line-strong)] transition-all"
             >
               <div className="p-3 rounded-[var(--radius-sm)] bg-[var(--color-bg-soft)] text-[var(--color-gold)]">
@@ -128,14 +141,14 @@ function ContactContent() {
                   E-mail comercial
                 </span>
                 <span className="text-[1rem] font-medium text-[var(--color-text)] group-hover:text-[var(--color-gold)] transition-colors">
-                  contato@olympsteel.com.br
+                  olympo_steel@outlook.com
                 </span>
               </div>
             </a>
 
             {/* Phone */}
             <a
-              href="tel:+5500000000000"
+              href="tel:+5537998749559"
               className="flex items-center gap-4 group p-4 rounded-[var(--radius-md)] bg-[var(--color-bg-elev)] border border-[var(--color-line)] hover:border-[var(--color-line-strong)] transition-all"
             >
               <div className="p-3 rounded-[var(--radius-sm)] bg-[var(--color-bg-soft)] text-[var(--color-gold)]">
@@ -146,7 +159,7 @@ function ContactContent() {
                   Telefone / WhatsApp
                 </span>
                 <span className="text-[1rem] font-medium text-[var(--color-text)] group-hover:text-[var(--color-gold)] transition-colors">
-                  (00) 00000-0000
+                  (37) 9 9874-9559
                 </span>
               </div>
             </a>
@@ -161,7 +174,7 @@ function ContactContent() {
                   Fábrica & Showroom
                 </span>
                 <span className="text-[1rem] font-medium text-[var(--color-text-dim)]">
-                  Distrito Industrial, Bento Gonçalves, RS
+                  Av. Inácio Ferreira do Sacramento, nº 1000 – Cláudio-MG
                 </span>
               </div>
             </div>
@@ -262,13 +275,37 @@ function ContactContent() {
                     </div>
                   </div>
 
+                  {/* Equipamento */}
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="equipamento" className="mono text-xs text-[var(--color-text-dim)] uppercase tracking-[0.05em]">
+                      Equipamento de Interesse <span className="text-[var(--color-text-faint)]">(Opcional)</span>
+                    </label>
+                    <select
+                      id="equipamento"
+                      name="equipamento"
+                      value={form.equipamento}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2.5 bg-[var(--color-bg-soft)] border border-[var(--color-line)] rounded-[var(--radius-sm)] text-sm text-[var(--color-text)] focus:border-[var(--color-gold)] focus:outline-none transition-colors"
+                    >
+                      <option value="">Selecione um equipamento...</option>
+                      {categories.map((cat) => (
+                        <optgroup key={cat.id} label={cat.nome}>
+                          {cat.produtos.map((produto) => (
+                            <option key={produto.nome} value={produto.nome}>
+                              {produto.nome}
+                            </option>
+                          ))}
+                        </optgroup>
+                      ))}
+                    </select>
+                  </div>
+
                   {/* Mensagem */}
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="mensagem" className="mono text-xs text-[var(--color-text-dim)] uppercase tracking-[0.05em]">
-                      Mensagem / Equipamentos de Interesse
+                      Mensagem <span className="text-[var(--color-text-faint)]">(Opcional)</span>
                     </label>
                     <textarea
-                      required
                       id="mensagem"
                       name="mensagem"
                       rows={4}
@@ -303,7 +340,7 @@ function ContactContent() {
                   </p>
                   <button
                     onClick={() => {
-                      setForm({ nome: "", email: "", telefone: "", academia: "", mensagem: "" });
+                      setForm({ nome: "", email: "", telefone: "", academia: "", equipamento: "", mensagem: "" });
                       setSubmitted(false);
                     }}
                     className="mt-4 text-xs font-semibold uppercase tracking-wider text-[var(--color-gold)] hover:text-[var(--color-gold-soft)] transition-colors inline-flex items-center gap-1.5 cursor-pointer"
@@ -322,9 +359,17 @@ function ContactContent() {
 }
 
 export function Contact() {
+  const [productParam, setProductParam] = useState<string | null>(null);
+  const handleProduct = useCallback((produto: string | null) => {
+    setProductParam(produto);
+  }, []);
+
   return (
-    <Suspense fallback={null}>
-      <ContactContent />
-    </Suspense>
+    <>
+      <Suspense fallback={null}>
+        <SearchParamsBridge onProduct={handleProduct} />
+      </Suspense>
+      <ContactContent productParam={productParam} />
+    </>
   );
 }

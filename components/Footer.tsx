@@ -16,13 +16,14 @@ const navGroups = [
       { label: "Steel", href: "/#linhas" },
       { label: "Zeus", href: "/#linhas" },
       { label: "BSC", href: "/#linhas" },
+      { label: "Expositores", href: "/#linhas" },
     ],
   },
   {
     title: "Contato",
     links: [
-      { label: "contato@olympsteel.com.br", href: "mailto:contato@olympsteel.com.br" },
-      { label: "(00) 00000-0000", href: "tel:+5500000000000" },
+      { label: "olympo_steel@outlook.com", href: "mailto:olympo_steel@outlook.com" },
+      { label: "(37) 9 9874-9559", href: "tel:+5537998749559" },
     ],
   },
 ];

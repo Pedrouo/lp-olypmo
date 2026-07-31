@@ -1,30 +1,31 @@
 "use client";
 
-import { useState, useMemo, useEffect, Suspense } from "react";
+import { useState, useMemo, useEffect, useCallback, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, ArrowUp } from "lucide-react";
 import { categories, allProducts, allLines, MATERIAL, type Product } from "@/data/products";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Button } from "@/components/ui/Button";
-import { useSearchParams, useRouter } from "next/navigation";
+import { productImage } from "@/lib/slugify";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 const badgeStyle = (linha: string) => {
   const l = linha.toLowerCase();
   if (l === "zeus")
     return "bg-[var(--color-gold)] text-[var(--color-ink)]";
-  if (l === "bsc" || l === "basic")
+  if (l === "bsc" || l === "basic" || l === "expositores")
     return "border border-[var(--color-line-strong)] text-[var(--color-text-dim)] bg-transparent";
   return "border border-[var(--color-gold)] text-[var(--color-text)] bg-transparent";
 };
 
-function CatalogoContent() {
-  const searchParams = useSearchParams();
-  const categoryFromUrl = searchParams.get("categoria");
-  const lineFromUrl = searchParams.get("linha");
-  const productFromUrl = searchParams.get("produto");
+interface CatalogoContentProps {
+  categoryFromUrl: string | null;
+  lineFromUrl: string | null;
+  productFromUrl: string | null;
+}
 
-  const router = useRouter();
+function CatalogoContent({ categoryFromUrl, lineFromUrl, productFromUrl }: CatalogoContentProps) {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedLine, setSelectedLine] = useState<string | null>(null);
@@ -300,7 +301,7 @@ function CatalogoContent() {
               {/* Product image */}
               <div className="w-full aspect-square overflow-hidden bg-[var(--color-surface)] border-b border-[var(--color-line)]">
                 <img
-                  src="/academia.webp"
+                  src={productImage(product.nome)}
                   alt={product.nome}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                 />
@@ -395,7 +396,7 @@ function CatalogoContent() {
                   <X size={16} />
                 </button>
                 <img
-                  src="/academia.webp"
+                  src={productImage(selectedProduct.nome)}
                   alt={selectedProduct.nome}
                   className="w-full h-full object-cover"
                 />
@@ -470,7 +471,7 @@ function CatalogoContent() {
             exit={{ opacity: 0, scale: 0.8, y: 16 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             onClick={scrollToTop}
-            className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 w-12 h-12 rounded-full bg-[var(--color-gold)] text-[var(--color-ink)] hover:bg-[var(--color-gold-soft)] hover:scale-110 active:scale-90 shadow-[0_4px_20px_rgba(232,196,76,0.3)] flex items-center justify-center cursor-pointer transition-all duration-300 group"
+            className="fixed bottom-24 right-5 sm:bottom-28 sm:right-8 z-50 w-12 h-12 rounded-full bg-[var(--color-gold)] text-[var(--color-ink)] hover:bg-[var(--color-gold-soft)] hover:scale-110 active:scale-90 shadow-[0_4px_20px_rgba(232,196,76,0.3)] flex items-center justify-center cursor-pointer transition-all duration-300 group"
             aria-label="Voltar ao topo"
           >
             <ArrowUp
@@ -484,10 +485,46 @@ function CatalogoContent() {
   );
 }
 
+// Lê os parâmetros da URL isoladamente. Fica dentro do Suspense sozinho,
+// sem nenhum elemento interativo, para não impedir a hidratação do resto da página.
+function SearchParamsBridge({
+  onParams,
+}: {
+  onParams: (params: CatalogoContentProps) => void;
+}) {
+  const searchParams = useSearchParams();
+  const categoria = searchParams.get("categoria");
+  const linha = searchParams.get("linha");
+  const produto = searchParams.get("produto");
+
+  useEffect(() => {
+    onParams({ categoryFromUrl: categoria, lineFromUrl: linha, productFromUrl: produto });
+  }, [categoria, linha, produto, onParams]);
+
+  return null;
+}
+
 export default function CatalogoPage() {
+  const [urlParams, setUrlParams] = useState<CatalogoContentProps>({
+    categoryFromUrl: null,
+    lineFromUrl: null,
+    productFromUrl: null,
+  });
+
+  const handleParams = useCallback((params: CatalogoContentProps) => {
+    setUrlParams(params);
+  }, []);
+
   return (
-    <Suspense fallback={<div className="pt-28 text-center text-sm text-[var(--color-text-dim)]">Carregando catálogo...</div>}>
-      <CatalogoContent />
-    </Suspense>
+    <>
+      <Suspense fallback={null}>
+        <SearchParamsBridge onParams={handleParams} />
+      </Suspense>
+      <CatalogoContent
+        categoryFromUrl={urlParams.categoryFromUrl}
+        lineFromUrl={urlParams.lineFromUrl}
+        productFromUrl={urlParams.productFromUrl}
+      />
+    </>
   );
 }

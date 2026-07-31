@@ -9,20 +9,26 @@ const lines = [
   {
     name: "Steel",
     badge: "steel" as const,
-    desc: "Equipamentos profissionais para academias. Construção sólida, geometria precisa.",
+    desc: "Equipamentos profissionais para academias, com estrutura robusta e acabamento preciso.",
     example: "Supino Sentado Articulado",
   },
   {
     name: "Zeus",
     badge: "zeus" as const,
-    desc: "Linha premium com torre de pesos integrada. Carenagem e acabamento de alto padrão.",
+    desc: "Linha premium com torre de pesos integrada e acabamento de alto padrão.",
     example: "Fly Voador Peitoral",
   },
   {
     name: "BSC",
     badge: "bsc" as const,
-    desc: "Alto custo-benefício, sem abrir mão da resistência do aço carbono.",
+    desc: "Componentes e complementos essenciais para o dia a dia da academia.",
     example: "Remada Baixa (Torre)",
+  },
+  {
+    name: "Expositores",
+    badge: "expositores" as const,
+    desc: "Suportes e expositores para halteres, anilhas e acessórios.",
+    example: "Suporte Dumbbell 3 Andares",
   },
 ];
 
@@ -31,6 +37,8 @@ const badgeStyles = {
     "border border-[var(--color-gold)] text-[var(--color-text)] bg-transparent",
   zeus: "bg-[var(--color-gold)] text-[var(--color-ink)]",
   bsc: "border border-[var(--color-line-strong)] text-[var(--color-text-dim)] bg-transparent",
+  expositores:
+    "border border-[var(--color-line-strong)] text-[var(--color-text-dim)] bg-transparent",
 };
 
 export function ProductLines() {
@@ -46,15 +54,15 @@ export function ProductLines() {
         <ScrollReveal delay={0.1}>
           <div className="flex items-start justify-between mb-[var(--space-12)] flex-wrap gap-4">
             <h2 className="text-[clamp(1.75rem,3vw,2.75rem)] font-semibold leading-[1.05] max-w-[500px]">
-              Três linhas, um padrão.
+              Quatro linhas, um padrão.
             </h2>
           </div>
         </ScrollReveal>
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-[var(--space-6)]">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[var(--space-6)]">
           {lines.map((line) => (
-            <StaggerItem key={line.name}>
-              <div className="group border border-[var(--color-line)] rounded-[var(--radius-sm)] overflow-hidden hover:border-[var(--color-line-strong)] transition-colors">
+            <StaggerItem key={line.name} className="h-full">
+              <div className="group h-full flex flex-col border border-[var(--color-line)] rounded-[var(--radius-sm)] overflow-hidden hover:border-[var(--color-line-strong)] transition-colors">
                 {/* Image */}
                 <div className="w-full aspect-[4/3] overflow-hidden">
                   <img
@@ -65,21 +73,21 @@ export function ProductLines() {
                 </div>
 
                 {/* Content */}
-                <div className="p-[var(--space-6)] bg-[var(--color-bg)] flex flex-col gap-3">
+                <div className="flex-1 p-[var(--space-6)] bg-[var(--color-bg)] flex flex-col gap-3">
                   <span
                     className={`inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] text-[0.75rem] font-semibold mono uppercase tracking-[0.05em] ${badgeStyles[line.badge]}`}
                   >
                     {line.name}
                   </span>
-                  <h3 className="text-[clamp(1.375rem,2vw,1.75rem)] font-semibold">
+                  <h3 className="min-h-[2.4em] text-[clamp(1.375rem,2vw,1.75rem)] font-semibold leading-[1.2]">
                     Linha {line.name}.
                   </h3>
-                  <p className="text-[1rem] text-[var(--color-text-dim)] leading-relaxed">
+                  <p className="min-h-[3em] text-[1rem] text-[var(--color-text-dim)] leading-relaxed line-clamp-2">
                     {line.desc}
                   </p>
                   <a
                     href={`/catalogo?linha=${line.name}`}
-                    className="inline-flex items-center gap-1 text-sm text-[var(--color-gold)] font-medium hover:text-[var(--color-gold-soft)] transition-colors mt-2 group/link"
+                    className="inline-flex items-center gap-1 text-sm text-[var(--color-gold)] font-medium hover:text-[var(--color-gold-soft)] transition-colors mt-auto pt-2 group/link"
                   >
                     Explorar
                     <ArrowRight
