@@ -319,10 +319,7 @@ function CatalogoContent({ categoryFromUrl, lineFromUrl, productFromUrl }: Catal
                 <h3 className="font-['Clash_Display',sans-serif] text-body font-semibold leading-tight line-clamp-2">
                   {product.nome}
                 </h3>
-                <span className="price-block text-sm mt-auto">
-                  {product.precoFmt}
-                </span>
-                <div className="flex flex-col gap-1 mt-2 pt-2 border-t border-[var(--color-line)]">
+                <div className="flex flex-col gap-1 mt-auto pt-2 border-t border-[var(--color-line)]">
                   <span className="mono text-[11px] text-[var(--color-text-dim)]">
                     {product.dimensoes}
                   </span>
@@ -413,7 +410,6 @@ function CatalogoContent({ categoryFromUrl, lineFromUrl, productFromUrl }: Catal
                 <h2 className="font-['Clash_Display',sans-serif] text-[clamp(1.5rem,2.5vw,2.25rem)] font-semibold leading-[1.05]">
                   {selectedProduct.nome}
                 </h2>
-                <span className="price-block">{selectedProduct.precoFmt}</span>
 
                 {/* Specs */}
                 <div className="flex flex-col gap-4 py-[var(--space-4)] border-t border-b border-[var(--color-line)]">
