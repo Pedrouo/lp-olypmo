@@ -30,7 +30,7 @@ export function AboutUs() {
           <div className="relative group rounded-[var(--radius-md)] overflow-hidden border border-neutral-700 bg-black shadow-[var(--shadow-card)] p-3">
             <div className="relative w-full aspect-[4/3] rounded-[var(--radius-sm)] overflow-hidden">
               <img
-                src="/academia.webp"
+                src="/products/multi-estacao-400kg.webp"
                 alt="Fábrica da Olympo Steel"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
               />

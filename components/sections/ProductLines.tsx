@@ -11,24 +11,28 @@ const lines = [
     badge: "steel" as const,
     desc: "Equipamentos profissionais para academias, com estrutura robusta e acabamento preciso.",
     example: "Supino Sentado Articulado",
+    image: "/products/supino-inclinado-olimpico.webp",
   },
   {
     name: "Zeus",
     badge: "zeus" as const,
     desc: "Linha premium com torre de pesos integrada e acabamento de alto padrão.",
     example: "Fly Voador Peitoral",
+    image: "/products/pull-over-articulado-gold-edition.webp",
   },
   {
     name: "BSC",
     badge: "bsc" as const,
     desc: "Componentes e complementos essenciais para o dia a dia da academia.",
     example: "Remada Baixa (Torre)",
+    image: "/products/remada-frontal-articulada-bsc.webp",
   },
   {
     name: "Expositores",
     badge: "expositores" as const,
     desc: "Suportes e expositores para halteres, anilhas e acessórios.",
     example: "Suporte Dumbbell 3 Andares",
+    image: "/products/suporte-dumbbell-3-andares.webp",
   },
 ];
 
@@ -66,7 +70,7 @@ export function ProductLines() {
                 {/* Image */}
                 <div className="w-full aspect-[4/3] overflow-hidden">
                   <img
-                    src="/academia.webp"
+                    src={line.image}
                     alt={`Linha ${line.name}, exemplo: ${line.example}`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                   />

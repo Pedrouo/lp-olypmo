@@ -7,6 +7,18 @@ import { ArrowRight } from "lucide-react";
 import { categories } from "@/data/products";
 import Link from "next/link";
 
+const categoryImages: Record<string, string> = {
+  "peitoral":              "/products/supino-sentado-articulado.webp",
+  "costas":                "/products/puxada-alta-articulada.webp",
+  "ombro-triceps":         "/products/desenvolvimento-de-ombro-torre.webp",
+  "pernas":                "/products/hack-squat-45-machine-hammer.webp",
+  "gluteo-core":           "/products/cadeira-adutora-e-abdutora-combo.webp",
+  "panturrilha-especiais": "/products/gravitron---linha-zeus-torre.webp",
+  "crossover-smith":       "/products/crossover-profissional.webp",
+  "bancos":                "/products/banco-supino-reto-com-barra.webp",
+  "suportes-expositores":  "/products/suporte-dumbbell-3-andares.webp",
+};
+
 export function CatalogList() {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -52,7 +64,7 @@ export function CatalogList() {
                   {/* Mobile thumbnail */}
                   <div className="lg:hidden w-12 h-12 rounded-[var(--radius-xs)] flex-shrink-0 overflow-hidden">
                     <img
-                      src="/academia.webp"
+                      src={categoryImages[cat.id] ?? "/academia.webp"}
                       alt={cat.nome}
                       className="w-full h-full object-cover"
                     />
@@ -112,7 +124,7 @@ export function CatalogList() {
                   className="absolute inset-0"
                 >
                   <img
-                    src="/academia.webp"
+                    src={categoryImages[categories[activeIndex].id] ?? "/academia.webp"}
                     alt={categories[activeIndex].nome}
                     className="w-full h-full object-cover"
                   />
