@@ -154,9 +154,9 @@ export function Nav() {
             className="flex items-center hover:opacity-80 transition-opacity"
           >
             <img
-              src="/logo-vetorizada-teste.svg"
+              src="/logo-olympo.jpeg"
               alt="Olympo Steel"
-              className="h-12 w-12 rounded-full object-cover"
+              className="h-12 w-12 rounded-xl object-cover"
             />
           </Link>
 
