@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { ArrowRight } from "lucide-react";
 
 const emphasis = [0.16, 1, 0.3, 1] as const;
 const easeOut = [0.22, 1, 0.36, 1] as const;
@@ -86,55 +85,33 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Right: Floating card — 5 cols */}
+        {/* Right: 3 video cards — 5 cols */}
         <motion.div
-          className="lg:col-span-5 flex justify-center lg:justify-end"
+          className="lg:col-span-5 flex flex-col gap-4"
           initial={{ opacity: 0, y: 24, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 1, duration: 0.7, ease: easeOut }}
         >
-          <div className="relative w-full max-w-[380px] bg-[rgba(20,20,22,0.55)] backdrop-blur-[16px] border border-[var(--color-line)] rounded-[var(--radius-md)] shadow-[var(--shadow-float)] p-6 group hover:border-[var(--color-gold-deep)] transition-colors duration-300">
-            {/* Product image */}
-            <div className="w-full aspect-[4/3] rounded-[var(--radius-sm)] mb-5 overflow-hidden">
-              <img
-                src="/academia.webp"
-                alt="Equipamentos Olympo Steel"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          {["/video1.mp4", "/video2.mp4", "/video3.mp4"].map((src, i) => (
+            <motion.div
+              key={src}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.1 + i * 0.15, duration: 0.6, ease: easeOut }}
+              className="group relative w-full overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-line)] bg-[rgba(20,20,22,0.55)] backdrop-blur-[16px] shadow-[var(--shadow-float)] hover:border-[var(--color-gold-deep)] transition-colors duration-300"
+            >
+              <video
+                src={src}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-40 object-cover"
               />
-            </div>
-
-            {/* Info */}
-            <div className="flex flex-col gap-2">
-              <div className="flex justify-between items-center">
-                <span className="inline-flex w-fit px-3 py-1 rounded-[var(--radius-pill)] bg-[var(--color-gold)] text-[var(--color-ink)] text-[0.75rem] font-semibold mono uppercase tracking-[0.05em]">
-                  Zeus
-                </span>
-                <span className="text-[var(--color-gold)] font-semibold mono text-[0.75rem] uppercase tracking-[0.08em] flex items-center gap-1.5">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--color-gold)] animate-pulse" />
-                  Destaque
-                </span>
-              </div>
-              <h3 className="text-[1.125rem] font-semibold leading-tight">
-                Pull-Over Articulado (Gold Edition)
-              </h3>
-              <p className="text-[1rem] text-[var(--color-text-dim)] leading-relaxed">
-                Linha premium com torre de pesos integrada. Carenagem e
-                acabamento de alto padrão.
-              </p>
-              <div className="flex items-center justify-end mt-3 pt-3 border-t border-[var(--color-line)]">
-                <a
-                  href="/catalogo?produto=Pull-Over Articulado (Gold Edition)"
-                  className="inline-flex items-center gap-1 text-sm text-[var(--color-gold)] font-medium hover:text-[var(--color-gold-soft)] transition-colors group"
-                >
-                  Ver detalhes
-                  <ArrowRight
-                    size={14}
-                    className="transition-transform group-hover:translate-x-1"
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
+              {/* subtle golden bottom line on hover */}
+              <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--color-gold)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
