@@ -68,12 +68,12 @@ function VideoCard({
         className="w-full h-full object-cover aspect-[9/16]"
       />
 
-      {/* Controls — bottom-right corner */}
-      <div className="absolute bottom-3 right-3 flex flex-col items-center gap-2">
+      {/* Controls — bottom-right corner; named group so slider reacts only to button hover */}
+      <div className="absolute bottom-3 right-3 group/ctrl flex flex-col items-center gap-2">
 
-        {/* Vertical volume slider — slides in on hover */}
+        {/* Vertical volume slider — slides in when hovering the controls area */}
         <div
-          className="flex flex-col items-center gap-1 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out"
+          className="flex flex-col items-center gap-1 opacity-0 translate-y-2 group-hover/ctrl:opacity-100 group-hover/ctrl:translate-y-0 transition-all duration-300 ease-out"
           style={{ height: 96 }}
         >
           {/* Track container */}
