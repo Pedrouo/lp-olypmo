@@ -156,7 +156,7 @@ export function Nav() {
             <img
               src="/logo-olympo.jpeg"
               alt="Olympo Steel"
-              className="h-12 w-12 rounded-xl object-cover"
+              className="h-16 w-16 rounded-xl object-cover"
             />
           </Link>
 
