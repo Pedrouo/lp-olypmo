@@ -13,7 +13,7 @@ export function Customization() {
           <div className="relative w-full aspect-[4/3] min-h-[360px] sm:min-h-0 rounded-[var(--radius-md)] overflow-hidden border border-[var(--color-line)]">
             {/* Image */}
             <img
-              src="/products/crossover-profissional.webp"
+              src="/academia.webp"
               alt="Academia equipada com Olympo Steel"
               className="w-full h-full object-cover"
             />
