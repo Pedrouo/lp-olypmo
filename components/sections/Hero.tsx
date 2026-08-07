@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { useRef, useState, useEffect } from "react";
-import { Volume2, VolumeX } from "lucide-react";
+import { Volume2, Volume1, VolumeX } from "lucide-react";
 
 const emphasis = [0.16, 1, 0.3, 1] as const;
 const easeOut  = [0.22, 1, 0.36, 1] as const;
@@ -21,14 +21,35 @@ function VideoCard({
   src: string;
   index: number;
   isMuted: boolean;
-  onToggle: (index: number) => void;
+  onToggle: (index: number, shouldUnmute?: boolean) => void;
 }) {
+  const [volume, setVolume] = useState(1); // last non-zero volume
   const ref = useRef<HTMLVideoElement>(null);
 
-  // Sync DOM muted property whenever parent state changes
+  // Sync DOM muted whenever parent changes it
   useEffect(() => {
-    if (ref.current) ref.current.muted = isMuted;
+    if (!ref.current) return;
+    ref.current.muted = isMuted;
+    // restore volume level when unmuted
+    if (!isMuted) ref.current.volume = volume;
   }, [isMuted]);
+
+  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const vol = parseFloat(e.target.value);
+    if (ref.current) ref.current.volume = vol;
+
+    if (vol === 0) {
+      // dragged to zero → mute
+      if (!isMuted) onToggle(index);
+    } else {
+      setVolume(vol);
+      // if currently muted and user raised volume → unmute this card
+      if (isMuted) onToggle(index, true);
+    }
+  };
+
+  const displayVol = isMuted ? 0 : volume;
+  const VolumeIcon = displayVol === 0 ? VolumeX : displayVol < 0.5 ? Volume1 : Volume2;
 
   return (
     <motion.div
@@ -47,14 +68,77 @@ function VideoCard({
         className="w-full h-full object-cover aspect-[9/16]"
       />
 
-      {/* Mute / unmute button */}
-      <button
-        onClick={() => onToggle(index)}
-        aria-label={isMuted ? "Ativar som" : "Desativar som"}
-        className="absolute bottom-3 right-3 flex items-center justify-center w-9 h-9 rounded-full bg-[rgba(11,11,12,0.65)] border border-[var(--color-line)] text-[var(--color-text)] backdrop-blur-[8px] hover:bg-[var(--color-gold)] hover:text-[var(--color-ink)] hover:border-[var(--color-gold)] transition-all duration-200"
-      >
-        {isMuted ? <VolumeX size={15} /> : <Volume2 size={15} />}
-      </button>
+      {/* Controls — bottom-right corner */}
+      <div className="absolute bottom-3 right-3 flex flex-col items-center gap-2">
+
+        {/* Vertical volume slider — slides in on hover */}
+        <div
+          className="flex flex-col items-center gap-1 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out"
+          style={{ height: 96 }}
+        >
+          {/* Track container */}
+          <div className="relative flex items-center justify-center" style={{ width: 36, height: 88 }}>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value={displayVol}
+              onChange={handleVolumeChange}
+              aria-label="Volume"
+              style={{
+                /* rotate to vertical */
+                position: "absolute",
+                width: 80,
+                height: 4,
+                transform: "rotate(-90deg)",
+                transformOrigin: "center center",
+                cursor: "pointer",
+                appearance: "none",
+                WebkitAppearance: "none",
+                background: `linear-gradient(to right, var(--color-gold) ${displayVol * 100}%, rgba(255,255,255,0.15) ${displayVol * 100}%)`,
+                borderRadius: 99,
+                outline: "none",
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Mute / unmute button */}
+        <button
+          onClick={() => onToggle(index)}
+          aria-label={isMuted ? "Ativar som" : "Desativar som"}
+          className="flex items-center justify-center w-9 h-9 rounded-full bg-[rgba(11,11,12,0.65)] border border-[var(--color-line)] text-[var(--color-text)] backdrop-blur-[8px] hover:bg-[var(--color-gold)] hover:text-[var(--color-ink)] hover:border-[var(--color-gold)] transition-all duration-200"
+        >
+          <VolumeIcon size={15} />
+        </button>
+      </div>
+
+      {/* Slider thumb styling via global style tag */}
+      <style>{`
+        input[type=range]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: var(--color-gold);
+          border: 2px solid var(--color-ink);
+          cursor: pointer;
+          box-shadow: 0 0 4px rgba(0,0,0,0.5);
+        }
+        input[type=range]::-moz-range-thumb {
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: var(--color-gold);
+          border: 2px solid var(--color-ink);
+          cursor: pointer;
+        }
+        input[type=range]::-moz-range-track {
+          border-radius: 99px;
+          height: 4px;
+        }
+      `}</style>
 
       {/* Golden accent line on hover */}
       <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--color-gold)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -67,8 +151,11 @@ export function Hero() {
   // null = todos mudos; number = índice do vídeo com som ativo
   const [activeAudioIdx, setActiveAudioIdx] = useState<number | null>(null);
 
-  const handleToggle = (index: number) => {
-    setActiveAudioIdx((prev) => (prev === index ? null : index));
+  const handleToggle = (index: number, forceUnmute?: boolean) => {
+    setActiveAudioIdx((prev) => {
+      if (forceUnmute) return index;
+      return prev === index ? null : index;
+    });
   };
 
   return (
