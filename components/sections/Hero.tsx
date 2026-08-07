@@ -87,7 +87,7 @@ export function Hero() {
 
         {/* Right: 3 video cards — 5 cols */}
         <motion.div
-          className="lg:col-span-5 flex flex-col gap-4"
+          className="lg:col-span-5 flex flex-row gap-3"
           initial={{ opacity: 0, y: 24, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 1, duration: 0.7, ease: easeOut }}
@@ -98,7 +98,7 @@ export function Hero() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.1 + i * 0.15, duration: 0.6, ease: easeOut }}
-              className="group relative w-full overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-line)] bg-[rgba(20,20,22,0.55)] backdrop-blur-[16px] shadow-[var(--shadow-float)] hover:border-[var(--color-gold-deep)] transition-colors duration-300"
+              className="group relative flex-1 overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-line)] bg-[rgba(20,20,22,0.55)] backdrop-blur-[16px] shadow-[var(--shadow-float)] hover:border-[var(--color-gold-deep)] transition-colors duration-300"
             >
               <video
                 src={src}
@@ -106,7 +106,7 @@ export function Hero() {
                 loop
                 muted
                 playsInline
-                className="w-full h-40 object-cover"
+                className="w-full h-full object-cover aspect-[9/16]"
               />
               {/* subtle golden bottom line on hover */}
               <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--color-gold)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
