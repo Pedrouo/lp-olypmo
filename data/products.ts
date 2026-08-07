@@ -97,7 +97,7 @@ export const categories: Category[] = [
       { nome: "Cadeira Flexora Sentada (Torre)", preco: 15900, precoFmt: "R$ 15.900,00", linha: "Zeus", dimensoes: "1,45m (C) x 1,10m (L) x 1,60m (A)", peso: "245 kg", categoria: "pernas" },
       { nome: "Mesa Romana (Flexora Deitada)", preco: 18800, precoFmt: "R$ 18.800,00", linha: "Zeus", dimensoes: "1,65m (C) x 1,10m (L) x 1,60m (A)", peso: "245 kg", categoria: "pernas" },
       { nome: "Flexor Ajoelhado Unilateral", preco: 10900, precoFmt: "R$ 10.900,00", linha: "Steel", dimensoes: "1,20m (C) x 1,50m (L) x 1,55m (A)", peso: "135 kg", categoria: "pernas" },
-      { nome: "Agachamento Pêndulo – Linha Steel", preco: 24500, precoFmt: "R$ 24.500,00", linha: "Steel", dimensoes: "2,80m (C) x 1,25m (L) x 1,90m (A)", peso: "165 kg", categoria: "pernas" },
+      { nome: "Agachamento Pêndulo – Linha Zeus", preco: 24500, precoFmt: "R$ 24.500,00", linha: "Zeus", dimensoes: "2,80m (C) x 1,25m (L) x 1,90m (A)", peso: "165 kg", categoria: "pernas" },
       { nome: "Rack de Agachamento (Squat Rack)", preco: 4500, precoFmt: "R$ 4.500,00", linha: "Steel", dimensoes: "1,45m (C) x 1,25m (L) x 1,85m (A)", peso: "75 kg", categoria: "pernas" },
       { nome: "Agachamento Sissy", preco: 1250, precoFmt: "R$ 1.250,00", linha: "Steel", dimensoes: "1,05m (C) x 0,60m (L) x 0,55m (A)", peso: "22 kg", categoria: "pernas" },
       { nome: "Gaiola de Agachamento Fechada (Power Rack)", preco: 10900, precoFmt: "R$ 10.900,00", linha: "Steel", dimensoes: "1,75m (C) x 1,80m (L) x 2,35m (A)", peso: "115 kg", categoria: "pernas" },

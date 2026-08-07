@@ -8,8 +8,8 @@ export function slugify(nome: string): string {
     .replace(/,/g, "")
     .replace(/°/g, "")
     .trim()
-    .replace(/\s+/g, "_")
-    .replace(/[^a-z0-9_-]/g, "");
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
 }
 
 export function productImage(nome: string): string {
