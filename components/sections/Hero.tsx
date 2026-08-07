@@ -184,7 +184,7 @@ export function Hero() {
             <span className="section-label">Fábrica de equipamentos</span>
           </motion.div>
 
-          <h1 className="text-[clamp(3.25rem,7vw,7.5rem)] font-bold leading-[0.95] tracking-[-0.02em]">
+          <h1 className="text-[clamp(2.5rem,5vw,5.5rem)] font-bold leading-[0.95] tracking-[-0.02em]">
             {titleLines.map((line, i) => (
               <span key={i} className="block overflow-hidden">
                 <motion.span
