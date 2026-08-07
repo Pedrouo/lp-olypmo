@@ -147,13 +147,17 @@ export function Nav() {
         }`}
       >
         <div className="container-site flex items-center justify-between h-20">
-          {/* Wordmark */}
+          {/* Logo */}
           <Link
             href="/"
             onClick={(e) => handleLinkClick(e, "/")}
-            className="font-['Clash_Display',sans-serif] text-xl font-bold tracking-[0.08em] text-[var(--color-text)] hover:text-[var(--color-gold)] transition-colors"
+            className="flex items-center hover:opacity-80 transition-opacity"
           >
-            OLYMPO
+            <img
+              src="/logo-olympo.jpeg"
+              alt="Olympo Steel"
+              className="h-12 w-12 rounded-full object-cover"
+            />
           </Link>
 
           {/* Desktop nav links */}

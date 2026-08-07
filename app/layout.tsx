@@ -13,6 +13,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  icons: { icon: "/logo-olympo.jpeg" },
   title: "Olympo Steel | Fábrica de Equipamentos de Musculação",
   description:
     "A Olympo Steel projeta e fabrica equipamentos de musculação em aço carbono com pintura eletrostática. Linhas Steel, Zeus e BSC. Durabilidade profissional e personalização sob medida.",
